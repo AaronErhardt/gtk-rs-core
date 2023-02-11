@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/collections/strv.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>strv.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-52c5db6f6f352e54.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../../static.files/light-4743e13df3dfe8c4.css"><link rel="stylesheet" disabled href="../../../static.files/dark-0e1b889528bd466b.css"><link rel="stylesheet" disabled href="../../../static.files/ayu-65289d5d067c7c66.css"><script id="default-settings" ></script><script src="../../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../../static.files/source-script-ea63cb6500f71309.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-3367e395607fafc1.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/collections/strv.rs`."><title>strv.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-0ef3deca4ed45ad8.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../../static.files/light-f501212b8b071243.css"><link rel="stylesheet" disabled href="../../../static.files/dark-e92fc12c34ff89d3.css"><link rel="stylesheet" disabled href="../../../static.files/ayu-a0090c8b1ced384f.css"><script src="../../../static.files/storage-3891ce972e3a2bf8.js"></script><script defer src="../../../static.files/source-script-ea63cb6500f71309.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-364b95f387bc3166.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -71,7 +71,7 @@
 </script>
 
 
-<nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../../glib/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../../glib/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -1535,308 +1535,11 @@
 <a href="#1462" id="1462">1462</a>
 <a href="#1463" id="1463">1463</a>
 <a href="#1464" id="1464">1464</a>
-<a href="#1465" id="1465">1465</a>
-<a href="#1466" id="1466">1466</a>
-<a href="#1467" id="1467">1467</a>
-<a href="#1468" id="1468">1468</a>
-<a href="#1469" id="1469">1469</a>
-<a href="#1470" id="1470">1470</a>
-<a href="#1471" id="1471">1471</a>
-<a href="#1472" id="1472">1472</a>
-<a href="#1473" id="1473">1473</a>
-<a href="#1474" id="1474">1474</a>
-<a href="#1475" id="1475">1475</a>
-<a href="#1476" id="1476">1476</a>
-<a href="#1477" id="1477">1477</a>
-<a href="#1478" id="1478">1478</a>
-<a href="#1479" id="1479">1479</a>
-<a href="#1480" id="1480">1480</a>
-<a href="#1481" id="1481">1481</a>
-<a href="#1482" id="1482">1482</a>
-<a href="#1483" id="1483">1483</a>
-<a href="#1484" id="1484">1484</a>
-<a href="#1485" id="1485">1485</a>
-<a href="#1486" id="1486">1486</a>
-<a href="#1487" id="1487">1487</a>
-<a href="#1488" id="1488">1488</a>
-<a href="#1489" id="1489">1489</a>
-<a href="#1490" id="1490">1490</a>
-<a href="#1491" id="1491">1491</a>
-<a href="#1492" id="1492">1492</a>
-<a href="#1493" id="1493">1493</a>
-<a href="#1494" id="1494">1494</a>
-<a href="#1495" id="1495">1495</a>
-<a href="#1496" id="1496">1496</a>
-<a href="#1497" id="1497">1497</a>
-<a href="#1498" id="1498">1498</a>
-<a href="#1499" id="1499">1499</a>
-<a href="#1500" id="1500">1500</a>
-<a href="#1501" id="1501">1501</a>
-<a href="#1502" id="1502">1502</a>
-<a href="#1503" id="1503">1503</a>
-<a href="#1504" id="1504">1504</a>
-<a href="#1505" id="1505">1505</a>
-<a href="#1506" id="1506">1506</a>
-<a href="#1507" id="1507">1507</a>
-<a href="#1508" id="1508">1508</a>
-<a href="#1509" id="1509">1509</a>
-<a href="#1510" id="1510">1510</a>
-<a href="#1511" id="1511">1511</a>
-<a href="#1512" id="1512">1512</a>
-<a href="#1513" id="1513">1513</a>
-<a href="#1514" id="1514">1514</a>
-<a href="#1515" id="1515">1515</a>
-<a href="#1516" id="1516">1516</a>
-<a href="#1517" id="1517">1517</a>
-<a href="#1518" id="1518">1518</a>
-<a href="#1519" id="1519">1519</a>
-<a href="#1520" id="1520">1520</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span>std::{ffi::c_char, fmt, marker::PhantomData, mem, ptr};
 
-<span class="kw">use crate</span>::{translate::<span class="kw-2">*</span>, GStr, GString};
-
-<span class="comment">// rustdoc-stripper-ignore-next
-</span><span class="doccomment">/// `NULL`-terminated UTF-8 string as stored in [`StrV`].
-///
-/// Unlike [`&amp;GStr`] this does not have its length stored.
-</span><span class="attr">#[repr(transparent)]
-</span><span class="kw">pub struct </span>StrVItem(ptr::NonNull&lt;c_char&gt;);
-
-<span class="kw">impl </span>fmt::Debug <span class="kw">for </span>StrVItem {
-    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
-        f.write_str(<span class="self">self</span>.as_str())
-    }
-}
-
-<span class="kw">impl </span>std::ops::Deref <span class="kw">for </span>StrVItem {
-    <span class="kw">type </span>Target = GStr;
-
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>deref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span><span class="self">Self</span>::Target {
-        <span class="self">self</span>.as_ref()
-    }
-}
-
-<span class="kw">impl </span>AsRef&lt;GStr&gt; <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>as_ref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>GStr {
-        <span class="kw">unsafe </span>{ GStr::from_ptr(<span class="self">self</span>.<span class="number">0</span>.as_ptr()) }
-    }
-}
-
-<span class="kw">impl </span>AsRef&lt;str&gt; <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>as_ref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>str {
-        <span class="self">self</span>.as_str()
-    }
-}
-
-<span class="kw">impl </span>fmt::Display <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {
-        f.write_str(<span class="self">self</span>.as_str())
-    }
-}
-
-<span class="kw">impl </span>Eq <span class="kw">for </span>StrVItem {}
-
-<span class="kw">impl </span>PartialEq <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>StrVItem) -&gt; bool {
-        <span class="self">self</span>.as_str() == other.as_str()
-    }
-}
-
-<span class="kw">impl </span>PartialEq&lt;StrVItem&gt; <span class="kw">for </span>String {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>StrVItem) -&gt; bool {
-        <span class="self">self</span>.as_str() == other.as_str()
-    }
-}
-
-<span class="kw">impl </span>PartialEq&lt;StrVItem&gt; <span class="kw">for </span>GString {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>StrVItem) -&gt; bool {
-        <span class="self">self</span>.as_str() == other.as_str()
-    }
-}
-
-<span class="kw">impl </span>PartialEq&lt;str&gt; <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>str) -&gt; bool {
-        <span class="self">self</span>.as_str() == other
-    }
-}
-
-<span class="kw">impl </span>PartialEq&lt;<span class="kw-2">&amp;</span>str&gt; <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: &amp;&amp;str) -&gt; bool {
-        <span class="self">self</span>.as_str() == <span class="kw-2">*</span>other
-    }
-}
-
-<span class="kw">impl </span>PartialEq&lt;GStr&gt; <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GStr) -&gt; bool {
-        <span class="self">self</span>.as_str() == other
-    }
-}
-
-<span class="kw">impl </span>PartialEq&lt;<span class="kw-2">&amp;</span>GStr&gt; <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: &amp;&amp;GStr) -&gt; bool {
-        <span class="self">self</span>.as_str() == <span class="kw-2">*</span>other
-    }
-}
-
-<span class="kw">impl </span>PartialEq&lt;StrVItem&gt; <span class="kw">for </span><span class="kw-2">&amp;</span>str {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>StrVItem) -&gt; bool {
-        <span class="kw-2">*</span><span class="self">self </span>== other.as_str()
-    }
-}
-
-<span class="kw">impl </span>PartialEq&lt;StrVItem&gt; <span class="kw">for </span><span class="kw-2">&amp;</span>GStr {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>StrVItem) -&gt; bool {
-        <span class="kw-2">*</span><span class="self">self </span>== other.as_str()
-    }
-}
-
-<span class="kw">impl </span>PartialEq&lt;String&gt; <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>String) -&gt; bool {
-        <span class="self">self</span>.as_str() == other.as_str()
-    }
-}
-
-<span class="kw">impl </span>PartialEq&lt;GString&gt; <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GString) -&gt; bool {
-        <span class="self">self</span>.as_str() == other.as_str()
-    }
-}
-
-<span class="kw">impl </span>PartialEq&lt;StrVItem&gt; <span class="kw">for </span>str {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>StrVItem) -&gt; bool {
-        <span class="self">self </span>== other.as_str()
-    }
-}
-
-<span class="kw">impl </span>PartialEq&lt;StrVItem&gt; <span class="kw">for </span>GStr {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>StrVItem) -&gt; bool {
-        <span class="self">self </span>== other.as_str()
-    }
-}
-
-<span class="kw">impl </span>PartialOrd&lt;StrVItem&gt; <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>StrVItem) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
-        <span class="prelude-val">Some</span>(<span class="self">self</span>.as_str().cmp(other.as_str()))
-    }
-}
-
-<span class="kw">impl </span>Ord <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span><span class="self">Self</span>) -&gt; std::cmp::Ordering {
-        <span class="self">self</span>.as_str().cmp(other.as_str())
-    }
-}
-
-<span class="kw">impl </span>PartialOrd&lt;StrVItem&gt; <span class="kw">for </span>String {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>StrVItem) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
-        <span class="prelude-val">Some</span>(<span class="self">self</span>.as_str().cmp(other.as_str()))
-    }
-}
-
-<span class="kw">impl </span>PartialOrd&lt;StrVItem&gt; <span class="kw">for </span>GString {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>StrVItem) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
-        <span class="prelude-val">Some</span>(<span class="self">self</span>.as_str().cmp(other.as_str()))
-    }
-}
-
-<span class="kw">impl </span>PartialOrd&lt;String&gt; <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>String) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
-        <span class="prelude-val">Some</span>(<span class="self">self</span>.as_str().cmp(other.as_str()))
-    }
-}
-
-<span class="kw">impl </span>PartialOrd&lt;GString&gt; <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GString) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
-        <span class="prelude-val">Some</span>(<span class="self">self</span>.as_str().cmp(other.as_str()))
-    }
-}
-
-<span class="kw">impl </span>PartialOrd&lt;StrVItem&gt; <span class="kw">for </span>str {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>StrVItem) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
-        <span class="prelude-val">Some</span>(<span class="self">self</span>.cmp(other.as_str()))
-    }
-}
-
-<span class="kw">impl </span>PartialOrd&lt;StrVItem&gt; <span class="kw">for </span>GStr {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>StrVItem) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
-        <span class="prelude-val">Some</span>(<span class="self">self</span>.as_str().cmp(other.as_str()))
-    }
-}
-
-<span class="kw">impl </span>PartialOrd&lt;str&gt; <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
-        <span class="prelude-val">Some</span>(<span class="self">self</span>.as_str().cmp(other))
-    }
-}
-
-<span class="kw">impl </span>PartialOrd&lt;GStr&gt; <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GStr) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
-        <span class="prelude-val">Some</span>(<span class="self">self</span>.as_str().cmp(other))
-    }
-}
-
-<span class="kw">impl </span>AsRef&lt;StrVItem&gt; <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>as_ref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>StrVItem {
-        <span class="self">self
-    </span>}
-}
-
-<span class="kw">impl </span>AsRef&lt;std::ffi::OsStr&gt; <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>as_ref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>std::ffi::OsStr {
-        <span class="self">self</span>.as_str().as_ref()
-    }
-}
-
-<span class="kw">impl </span>AsRef&lt;std::path::Path&gt; <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>as_ref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>std::path::Path {
-        <span class="self">self</span>.as_str().as_ref()
-    }
-}
-
-<span class="kw">impl </span>AsRef&lt;[u8]&gt; <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>as_ref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>[u8] {
-        <span class="self">self</span>.as_bytes()
-    }
-}
-
-<span class="kw">impl </span>std::hash::Hash <span class="kw">for </span>StrVItem {
-    <span class="attr">#[inline]
-    </span><span class="kw">fn </span>hash&lt;H: std::hash::Hasher&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, state: <span class="kw-2">&amp;mut </span>H) {
-        <span class="self">self</span>.as_str().hash(state);
-    }
-}
+<span class="kw">use crate</span>::{translate::<span class="kw-2">*</span>, GStr, GString, GStringPtr};
 
 <span class="comment">// rustdoc-stripper-ignore-next
 </span><span class="doccomment">/// Minimum size of the `StrV` allocation.
@@ -1934,25 +1637,25 @@
     }
 }
 
-<span class="kw">impl </span>AsRef&lt;[StrVItem]&gt; <span class="kw">for </span>StrV {
+<span class="kw">impl </span>AsRef&lt;[GStringPtr]&gt; <span class="kw">for </span>StrV {
     <span class="attr">#[inline]
-    </span><span class="kw">fn </span>as_ref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>[StrVItem] {
+    </span><span class="kw">fn </span>as_ref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>[GStringPtr] {
         <span class="self">self</span>.as_slice()
     }
 }
 
-<span class="kw">impl </span>std::borrow::Borrow&lt;[StrVItem]&gt; <span class="kw">for </span>StrV {
+<span class="kw">impl </span>std::borrow::Borrow&lt;[GStringPtr]&gt; <span class="kw">for </span>StrV {
     <span class="attr">#[inline]
-    </span><span class="kw">fn </span>borrow(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>[StrVItem] {
+    </span><span class="kw">fn </span>borrow(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>[GStringPtr] {
         <span class="self">self</span>.as_slice()
     }
 }
 
 <span class="kw">impl </span>std::ops::Deref <span class="kw">for </span>StrV {
-    <span class="kw">type </span>Target = [StrVItem];
+    <span class="kw">type </span>Target = [GStringPtr];
 
     <span class="attr">#[inline]
-    </span><span class="kw">fn </span>deref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>[StrVItem] {
+    </span><span class="kw">fn </span>deref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>[GStringPtr] {
         <span class="self">self</span>.as_slice()
     }
 }
@@ -1994,8 +1697,8 @@
 }
 
 <span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; std::iter::IntoIterator <span class="kw">for </span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>StrV {
-    <span class="kw">type </span>Item = <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>StrVItem;
-    <span class="kw">type </span>IntoIter = std::slice::Iter&lt;<span class="lifetime">&#39;a</span>, StrVItem&gt;;
+    <span class="kw">type </span>Item = <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>GStringPtr;
+    <span class="kw">type </span>IntoIter = std::slice::Iter&lt;<span class="lifetime">&#39;a</span>, GStringPtr&gt;;
 
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>into_iter(<span class="self">self</span>) -&gt; <span class="self">Self</span>::IntoIter {
@@ -2035,12 +1738,12 @@
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Returns the remaining items as slice.
     </span><span class="attr">#[inline]
-    </span><span class="kw">pub fn </span>as_slice(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>[StrVItem] {
+    </span><span class="kw">pub const fn </span>as_slice(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>[GStringPtr] {
         <span class="kw">unsafe </span>{
             <span class="kw">if </span><span class="self">self</span>.len == <span class="number">0 </span>{
                 <span class="kw-2">&amp;</span>[]
             } <span class="kw">else </span>{
-                std::slice::from_raw_parts(<span class="self">self</span>.idx.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>StrVItem, <span class="self">self</span>.len)
+                std::slice::from_raw_parts(<span class="self">self</span>.idx.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>GStringPtr, <span class="self">self</span>.len)
             }
         }
     }
@@ -2122,6 +1825,29 @@
     }
 }
 
+<span class="kw">impl </span>From&lt;Vec&lt;String&gt;&gt; <span class="kw">for </span>StrV {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>from(value: Vec&lt;String&gt;) -&gt; <span class="self">Self </span>{
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span>len = value.len();
+            <span class="kw">let </span><span class="kw-2">mut </span>s = <span class="self">Self</span>::with_capacity(len);
+            <span class="kw">for </span>(i, item) <span class="kw">in </span>value.into_iter().enumerate() {
+                <span class="kw-2">*</span>s.ptr.as_ptr().add(i) = GString::from(item).into_glib_ptr();
+            }
+            s.len = len;
+            <span class="kw-2">*</span>s.ptr.as_ptr().add(s.len) = ptr::null_mut();
+            s
+        }
+    }
+}
+
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; From&lt;Vec&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str&gt;&gt; <span class="kw">for </span>StrV {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>from(value: Vec&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str&gt;) -&gt; <span class="self">Self </span>{
+        value.as_slice().into()
+    }
+}
+
 <span class="kw">impl </span>From&lt;Vec&lt;GString&gt;&gt; <span class="kw">for </span>StrV {
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>from(value: Vec&lt;GString&gt;) -&gt; <span class="self">Self </span>{
@@ -2148,6 +1874,21 @@
                 <span class="kw-2">*</span>s.ptr.as_ptr().add(i) = v.into_glib_ptr();
             }
             s.len = len;
+            <span class="kw-2">*</span>s.ptr.as_ptr().add(s.len) = ptr::null_mut();
+            s
+        }
+    }
+}
+
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, <span class="kw">const </span>N: usize&gt; From&lt;[<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str; N]&gt; <span class="kw">for </span>StrV {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>from(value: [<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str; N]) -&gt; <span class="self">Self </span>{
+        <span class="kw">unsafe </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>s = <span class="self">Self</span>::with_capacity(value.len());
+            <span class="kw">for </span>(i, item) <span class="kw">in </span>value.iter().enumerate() {
+                <span class="kw-2">*</span>s.ptr.as_ptr().add(i) = GString::from(<span class="kw-2">*</span>item).into_glib_ptr();
+            }
+            s.len = value.len();
             <span class="kw-2">*</span>s.ptr.as_ptr().add(s.len) = ptr::null_mut();
             s
         }
@@ -2190,7 +1931,7 @@
         <span class="kw">unsafe </span>{
             <span class="kw">let </span><span class="kw-2">mut </span>s = <span class="self">Self</span>::with_capacity(<span class="self">self</span>.len());
             <span class="kw">for </span>(i, item) <span class="kw">in </span><span class="self">self</span>.iter().enumerate() {
-                <span class="kw-2">*</span>s.ptr.as_ptr().add(i) = GString::from(item.as_str()).into_glib_ptr();
+                <span class="kw-2">*</span>s.ptr.as_ptr().add(i) = GString::from(item.to_str()).into_glib_ptr();
             }
             s.len = <span class="self">self</span>.len();
             <span class="kw-2">*</span>s.ptr.as_ptr().add(s.len) = ptr::null_mut();
@@ -2203,7 +1944,7 @@
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Borrows a C array.
     </span><span class="attr">#[inline]
-    </span><span class="kw">pub unsafe fn </span>from_glib_borrow&lt;<span class="lifetime">&#39;a</span>&gt;(ptr: <span class="kw-2">*const *const </span>c_char) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[StrVItem] {
+    </span><span class="kw">pub unsafe fn </span>from_glib_borrow&lt;<span class="lifetime">&#39;a</span>&gt;(ptr: <span class="kw-2">*const *const </span>c_char) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[GStringPtr] {
         <span class="kw">let </span><span class="kw-2">mut </span>len = <span class="number">0</span>;
         <span class="kw">if </span>!ptr.is_null() {
             <span class="kw">while </span>!(<span class="kw-2">*</span>ptr.add(len)).is_null() {
@@ -2219,13 +1960,13 @@
     </span><span class="kw">pub unsafe fn </span>from_glib_borrow_num&lt;<span class="lifetime">&#39;a</span>&gt;(
         ptr: <span class="kw-2">*const *const </span>c_char,
         len: usize,
-    ) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[StrVItem] {
+    ) -&gt; <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[GStringPtr] {
         <span class="macro">debug_assert!</span>(!ptr.is_null() || len == <span class="number">0</span>);
 
         <span class="kw">if </span>len == <span class="number">0 </span>{
             <span class="kw-2">&amp;</span>[]
         } <span class="kw">else </span>{
-            std::slice::from_raw_parts(ptr <span class="kw">as </span><span class="kw-2">*const </span>StrVItem, len)
+            std::slice::from_raw_parts(ptr <span class="kw">as </span><span class="kw-2">*const </span>GStringPtr, len)
         }
     }
 
@@ -2242,11 +1983,23 @@
         <span class="kw">if </span>len == <span class="number">0 </span>{
             StrV::default()
         } <span class="kw">else </span>{
-            <span class="comment">// Need to fully copy the array here.
-            </span><span class="kw">let </span>slice = <span class="self">Self</span>::from_glib_borrow_num(ptr, len);
-            <span class="kw">let </span><span class="kw-2">mut </span>s = <span class="self">Self</span>::new();
-            s.extend_from_slice(slice);
-            s
+            <span class="kw">let </span>new_ptr =
+                ffi::g_malloc(mem::size_of::&lt;<span class="kw-2">*mut </span>c_char&gt;() * len + <span class="number">1</span>) <span class="kw">as </span><span class="kw-2">*mut *mut </span>c_char;
+
+            <span class="comment">// Need to clone every item because we don&#39;t own it here
+            </span><span class="kw">for </span>i <span class="kw">in </span><span class="number">0</span>..len {
+                <span class="kw">let </span>p = ptr.add(i) <span class="kw">as </span><span class="kw-2">*mut *const </span>c_char;
+                <span class="kw">let </span>q = new_ptr.add(i) <span class="kw">as </span><span class="kw-2">*mut *const </span>c_char;
+                <span class="kw-2">*</span>q = ffi::g_strdup(<span class="kw-2">*</span>p);
+            }
+
+            <span class="kw-2">*</span>new_ptr.add(len) = ptr::null_mut();
+
+            StrV {
+                ptr: ptr::NonNull::new_unchecked(new_ptr),
+                len,
+                capacity: len + <span class="number">1</span>,
+            }
         }
     }
 
@@ -2474,14 +2227,14 @@
     }
 
     <span class="comment">// rustdoc-stripper-ignore-next
-    </span><span class="doccomment">/// Borrows this slice as a `&amp;[StrVItem]`.
+    </span><span class="doccomment">/// Borrows this slice as a `&amp;[GStringPtr]`.
     </span><span class="attr">#[inline]
-    </span><span class="kw">pub fn </span>as_slice(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>[StrVItem] {
+    </span><span class="kw">pub const fn </span>as_slice(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>[GStringPtr] {
         <span class="kw">unsafe </span>{
             <span class="kw">if </span><span class="self">self</span>.len == <span class="number">0 </span>{
                 <span class="kw-2">&amp;</span>[]
             } <span class="kw">else </span>{
-                std::slice::from_raw_parts(<span class="self">self</span>.ptr.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>StrVItem, <span class="self">self</span>.len)
+                std::slice::from_raw_parts(<span class="self">self</span>.ptr.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span>GStringPtr, <span class="self">self</span>.len)
             }
         }
     }
@@ -2747,7 +2500,7 @@
     }
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">crate</span>::StaticType <span class="kw">for </span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[StrVItem] {
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">crate</span>::StaticType <span class="kw">for </span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[GStringPtr] {
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>static_type() -&gt; <span class="kw">crate</span>::Type {
         &lt;Vec&lt;String&gt;&gt;::static_type()
@@ -2767,7 +2520,7 @@
     }
 }
 
-<span class="kw">unsafe impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">crate</span>::value::FromValue&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">for </span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[StrVItem] {
+<span class="kw">unsafe impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">crate</span>::value::FromValue&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">for </span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[GStringPtr] {
     <span class="kw">type </span>Checker = <span class="kw">crate</span>::value::GenericValueTypeChecker&lt;<span class="self">Self</span>&gt;;
 
     <span class="kw">unsafe fn </span>from_value(value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="kw">crate</span>::value::Value) -&gt; <span class="self">Self </span>{
@@ -2838,31 +2591,121 @@
 <span class="kw">impl </span>IntoStrV <span class="kw">for </span>Vec&lt;GString&gt; {
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>run_with_strv&lt;R, F: FnOnce(<span class="kw-2">&amp;</span>[<span class="kw-2">*mut </span>c_char]) -&gt; R&gt;(<span class="self">self</span>, f: F) -&gt; R {
-        <span class="kw">let </span>required_len = (<span class="self">self</span>.len() + <span class="number">1</span>) * mem::size_of::&lt;<span class="kw-2">*mut </span>c_char&gt;()
-            + <span class="self">self</span>.iter().map(|s| s.len() + <span class="number">1</span>).sum::&lt;usize&gt;();
+        <span class="self">self</span>.as_slice().run_with_strv(f)
+    }
+}
+
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; IntoStrV <span class="kw">for </span>Vec&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>GString&gt; {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>run_with_strv&lt;R, F: FnOnce(<span class="kw-2">&amp;</span>[<span class="kw-2">*mut </span>c_char]) -&gt; R&gt;(<span class="self">self</span>, f: F) -&gt; R {
+        <span class="self">self</span>.as_slice().run_with_strv(f)
+    }
+}
+
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; IntoStrV <span class="kw">for </span>Vec&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>GStr&gt; {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>run_with_strv&lt;R, F: FnOnce(<span class="kw-2">&amp;</span>[<span class="kw-2">*mut </span>c_char]) -&gt; R&gt;(<span class="self">self</span>, f: F) -&gt; R {
+        <span class="self">self</span>.as_slice().run_with_strv(f)
+    }
+}
+
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; IntoStrV <span class="kw">for </span>Vec&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str&gt; {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>run_with_strv&lt;R, F: FnOnce(<span class="kw-2">&amp;</span>[<span class="kw-2">*mut </span>c_char]) -&gt; R&gt;(<span class="self">self</span>, f: F) -&gt; R {
+        <span class="self">self</span>.as_slice().run_with_strv(f)
+    }
+}
+
+<span class="kw">impl </span>IntoStrV <span class="kw">for </span>Vec&lt;String&gt; {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>run_with_strv&lt;R, F: FnOnce(<span class="kw-2">&amp;</span>[<span class="kw-2">*mut </span>c_char]) -&gt; R&gt;(<span class="self">self</span>, f: F) -&gt; R {
+        <span class="self">self</span>.as_slice().run_with_strv(f)
+    }
+}
+
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; IntoStrV <span class="kw">for </span>Vec&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>String&gt; {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>run_with_strv&lt;R, F: FnOnce(<span class="kw-2">&amp;</span>[<span class="kw-2">*mut </span>c_char]) -&gt; R&gt;(<span class="self">self</span>, f: F) -&gt; R {
+        <span class="self">self</span>.as_slice().run_with_strv(f)
+    }
+}
+
+<span class="kw">impl </span>IntoStrV <span class="kw">for </span><span class="kw-2">&amp;</span>[GString] {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>run_with_strv&lt;R, F: FnOnce(<span class="kw-2">&amp;</span>[<span class="kw-2">*mut </span>c_char]) -&gt; R&gt;(<span class="self">self</span>, f: F) -&gt; R {
+        <span class="kw">let </span>required_len = (<span class="self">self</span>.len() + <span class="number">1</span>) * mem::size_of::&lt;<span class="kw-2">*mut </span>c_char&gt;();
 
         <span class="kw">if </span>required_len &lt; MAX_STACK_ALLOCATION * mem::size_of::&lt;<span class="kw-2">*mut </span>c_char&gt;() {
             <span class="kw">unsafe </span>{
                 <span class="kw">let </span><span class="kw-2">mut </span>s = mem::MaybeUninit::&lt;[<span class="kw-2">*mut </span>c_char; MAX_STACK_ALLOCATION]&gt;::uninit();
                 <span class="kw">let </span>ptrs = s.as_mut_ptr() <span class="kw">as </span><span class="kw-2">*mut *mut </span>c_char;
-                <span class="kw">let </span><span class="kw-2">mut </span>strs = ptrs.add(<span class="self">self</span>.len() + <span class="number">1</span>) <span class="kw">as </span><span class="kw-2">*mut </span>c_char;
 
                 <span class="kw">for </span>(i, item) <span class="kw">in </span><span class="self">self</span>.iter().enumerate() {
-                    ptr::copy_nonoverlapping(item.as_ptr(), strs, item.len() + <span class="number">1</span>);
-                    <span class="kw-2">*</span>ptrs.add(i) = strs;
-                    strs = strs.add(item.len() + <span class="number">1</span>);
+                    <span class="kw-2">*</span>ptrs.add(i) = item.as_ptr() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>;
                 }
                 <span class="kw-2">*</span>ptrs.add(<span class="self">self</span>.len()) = ptr::null_mut();
 
                 f(std::slice::from_raw_parts(ptrs, <span class="self">self</span>.len() + <span class="number">1</span>))
             }
         } <span class="kw">else </span>{
-            StrV::from(<span class="self">self</span>).run_with_strv(f)
+            <span class="kw">let </span><span class="kw-2">mut </span>s = StrV::with_capacity(<span class="self">self</span>.len());
+            s.extend_from_slice(<span class="self">self</span>);
+            s.run_with_strv(f)
         }
     }
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; IntoStrV <span class="kw">for </span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[String] {
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; IntoStrV <span class="kw">for </span><span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>GString] {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>run_with_strv&lt;R, F: FnOnce(<span class="kw-2">&amp;</span>[<span class="kw-2">*mut </span>c_char]) -&gt; R&gt;(<span class="self">self</span>, f: F) -&gt; R {
+        <span class="kw">let </span>required_len = (<span class="self">self</span>.len() + <span class="number">1</span>) * mem::size_of::&lt;<span class="kw-2">*mut </span>c_char&gt;();
+
+        <span class="kw">if </span>required_len &lt; MAX_STACK_ALLOCATION * mem::size_of::&lt;<span class="kw-2">*mut </span>c_char&gt;() {
+            <span class="kw">unsafe </span>{
+                <span class="kw">let </span><span class="kw-2">mut </span>s = mem::MaybeUninit::&lt;[<span class="kw-2">*mut </span>c_char; MAX_STACK_ALLOCATION]&gt;::uninit();
+                <span class="kw">let </span>ptrs = s.as_mut_ptr() <span class="kw">as </span><span class="kw-2">*mut *mut </span>c_char;
+
+                <span class="kw">for </span>(i, item) <span class="kw">in </span><span class="self">self</span>.iter().enumerate() {
+                    <span class="kw-2">*</span>ptrs.add(i) = item.as_ptr() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>;
+                }
+                <span class="kw-2">*</span>ptrs.add(<span class="self">self</span>.len()) = ptr::null_mut();
+
+                f(std::slice::from_raw_parts(ptrs, <span class="self">self</span>.len() + <span class="number">1</span>))
+            }
+        } <span class="kw">else </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>s = StrV::with_capacity(<span class="self">self</span>.len());
+            s.extend_from_slice(<span class="self">self</span>);
+            s.run_with_strv(f)
+        }
+    }
+}
+
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; IntoStrV <span class="kw">for </span><span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>GStr] {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>run_with_strv&lt;R, F: FnOnce(<span class="kw-2">&amp;</span>[<span class="kw-2">*mut </span>c_char]) -&gt; R&gt;(<span class="self">self</span>, f: F) -&gt; R {
+        <span class="kw">let </span>required_len = (<span class="self">self</span>.len() + <span class="number">1</span>) * mem::size_of::&lt;<span class="kw-2">*mut </span>c_char&gt;();
+
+        <span class="kw">if </span>required_len &lt; MAX_STACK_ALLOCATION * mem::size_of::&lt;<span class="kw-2">*mut </span>c_char&gt;() {
+            <span class="kw">unsafe </span>{
+                <span class="kw">let </span><span class="kw-2">mut </span>s = mem::MaybeUninit::&lt;[<span class="kw-2">*mut </span>c_char; MAX_STACK_ALLOCATION]&gt;::uninit();
+                <span class="kw">let </span>ptrs = s.as_mut_ptr() <span class="kw">as </span><span class="kw-2">*mut *mut </span>c_char;
+
+                <span class="kw">for </span>(i, item) <span class="kw">in </span><span class="self">self</span>.iter().enumerate() {
+                    <span class="kw-2">*</span>ptrs.add(i) = item.as_ptr() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>;
+                }
+                <span class="kw-2">*</span>ptrs.add(<span class="self">self</span>.len()) = ptr::null_mut();
+
+                f(std::slice::from_raw_parts(ptrs, <span class="self">self</span>.len() + <span class="number">1</span>))
+            }
+        } <span class="kw">else </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>s = StrV::with_capacity(<span class="self">self</span>.len());
+            s.extend_from_slice(<span class="self">self</span>);
+            s.run_with_strv(f)
+        }
+    }
+}
+
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; IntoStrV <span class="kw">for </span><span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str] {
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>run_with_strv&lt;R, F: FnOnce(<span class="kw-2">&amp;</span>[<span class="kw-2">*mut </span>c_char]) -&gt; R&gt;(<span class="self">self</span>, f: F) -&gt; R {
         <span class="kw">let </span>required_len = (<span class="self">self</span>.len() + <span class="number">1</span>) * mem::size_of::&lt;<span class="kw-2">*mut </span>c_char&gt;()
@@ -2892,7 +2735,37 @@
     }
 }
 
-<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; IntoStrV <span class="kw">for </span><span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str] {
+<span class="kw">impl </span>IntoStrV <span class="kw">for </span><span class="kw-2">&amp;</span>[String] {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>run_with_strv&lt;R, F: FnOnce(<span class="kw-2">&amp;</span>[<span class="kw-2">*mut </span>c_char]) -&gt; R&gt;(<span class="self">self</span>, f: F) -&gt; R {
+        <span class="kw">let </span>required_len = (<span class="self">self</span>.len() + <span class="number">1</span>) * mem::size_of::&lt;<span class="kw-2">*mut </span>c_char&gt;()
+            + <span class="self">self</span>.iter().map(|s| s.len() + <span class="number">1</span>).sum::&lt;usize&gt;();
+
+        <span class="kw">if </span>required_len &lt; MAX_STACK_ALLOCATION * mem::size_of::&lt;<span class="kw-2">*mut </span>c_char&gt;() {
+            <span class="kw">unsafe </span>{
+                <span class="kw">let </span><span class="kw-2">mut </span>s = mem::MaybeUninit::&lt;[<span class="kw-2">*mut </span>c_char; MAX_STACK_ALLOCATION]&gt;::uninit();
+                <span class="kw">let </span>ptrs = s.as_mut_ptr() <span class="kw">as </span><span class="kw-2">*mut *mut </span>c_char;
+                <span class="kw">let </span><span class="kw-2">mut </span>strs = ptrs.add(<span class="self">self</span>.len() + <span class="number">1</span>) <span class="kw">as </span><span class="kw-2">*mut </span>c_char;
+
+                <span class="kw">for </span>(i, item) <span class="kw">in </span><span class="self">self</span>.iter().enumerate() {
+                    ptr::copy_nonoverlapping(item.as_ptr() <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>, strs, item.len());
+                    <span class="kw-2">*</span>strs.add(item.len()) = <span class="number">0</span>;
+                    <span class="kw-2">*</span>ptrs.add(i) = strs;
+                    strs = strs.add(item.len() + <span class="number">1</span>);
+                }
+                <span class="kw-2">*</span>ptrs.add(<span class="self">self</span>.len()) = ptr::null_mut();
+
+                f(std::slice::from_raw_parts(ptrs, <span class="self">self</span>.len() + <span class="number">1</span>))
+            }
+        } <span class="kw">else </span>{
+            <span class="kw">let </span><span class="kw-2">mut </span>s = StrV::with_capacity(<span class="self">self</span>.len());
+            s.extend_from_slice(<span class="self">self</span>);
+            s.run_with_strv(f)
+        }
+    }
+}
+
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; IntoStrV <span class="kw">for </span><span class="kw-2">&amp;</span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>String] {
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>run_with_strv&lt;R, F: FnOnce(<span class="kw-2">&amp;</span>[<span class="kw-2">*mut </span>c_char]) -&gt; R&gt;(<span class="self">self</span>, f: F) -&gt; R {
         <span class="kw">let </span>required_len = (<span class="self">self</span>.len() + <span class="number">1</span>) * mem::size_of::&lt;<span class="kw-2">*mut </span>c_char&gt;()
@@ -2925,27 +2798,42 @@
 <span class="kw">impl</span>&lt;<span class="kw">const </span>N: usize&gt; IntoStrV <span class="kw">for </span>[GString; N] {
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>run_with_strv&lt;R, F: FnOnce(<span class="kw-2">&amp;</span>[<span class="kw-2">*mut </span>c_char]) -&gt; R&gt;(<span class="self">self</span>, f: F) -&gt; R {
-        <span class="kw">let </span>required_len = (<span class="self">self</span>.len() + <span class="number">1</span>) * mem::size_of::&lt;<span class="kw-2">*mut </span>c_char&gt;()
-            + <span class="self">self</span>.iter().map(|s| s.len() + <span class="number">1</span>).sum::&lt;usize&gt;();
+        <span class="self">self</span>.as_slice().run_with_strv(f)
+    }
+}
 
-        <span class="kw">if </span>required_len &lt; MAX_STACK_ALLOCATION * mem::size_of::&lt;<span class="kw-2">*mut </span>c_char&gt;() {
-            <span class="kw">unsafe </span>{
-                <span class="kw">let </span><span class="kw-2">mut </span>s = mem::MaybeUninit::&lt;[<span class="kw-2">*mut </span>c_char; MAX_STACK_ALLOCATION]&gt;::uninit();
-                <span class="kw">let </span>ptrs = s.as_mut_ptr() <span class="kw">as </span><span class="kw-2">*mut *mut </span>c_char;
-                <span class="kw">let </span><span class="kw-2">mut </span>strs = ptrs.add(<span class="self">self</span>.len() + <span class="number">1</span>) <span class="kw">as </span><span class="kw-2">*mut </span>c_char;
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, <span class="kw">const </span>N: usize&gt; IntoStrV <span class="kw">for </span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>GString; N] {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>run_with_strv&lt;R, F: FnOnce(<span class="kw-2">&amp;</span>[<span class="kw-2">*mut </span>c_char]) -&gt; R&gt;(<span class="self">self</span>, f: F) -&gt; R {
+        <span class="self">self</span>.as_slice().run_with_strv(f)
+    }
+}
 
-                <span class="kw">for </span>(i, item) <span class="kw">in </span><span class="self">self</span>.iter().enumerate() {
-                    ptr::copy_nonoverlapping(item.as_ptr(), strs, item.len() + <span class="number">1</span>);
-                    <span class="kw-2">*</span>ptrs.add(i) = strs;
-                    strs = strs.add(item.len() + <span class="number">1</span>);
-                }
-                <span class="kw-2">*</span>ptrs.add(<span class="self">self</span>.len()) = ptr::null_mut();
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, <span class="kw">const </span>N: usize&gt; IntoStrV <span class="kw">for </span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>GStr; N] {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>run_with_strv&lt;R, F: FnOnce(<span class="kw-2">&amp;</span>[<span class="kw-2">*mut </span>c_char]) -&gt; R&gt;(<span class="self">self</span>, f: F) -&gt; R {
+        <span class="self">self</span>.as_slice().run_with_strv(f)
+    }
+}
 
-                f(std::slice::from_raw_parts(ptrs, <span class="self">self</span>.len() + <span class="number">1</span>))
-            }
-        } <span class="kw">else </span>{
-            StrV::from(<span class="self">self</span>).run_with_strv(f)
-        }
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, <span class="kw">const </span>N: usize&gt; IntoStrV <span class="kw">for </span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str; N] {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>run_with_strv&lt;R, F: FnOnce(<span class="kw-2">&amp;</span>[<span class="kw-2">*mut </span>c_char]) -&gt; R&gt;(<span class="self">self</span>, f: F) -&gt; R {
+        <span class="self">self</span>.as_slice().run_with_strv(f)
+    }
+}
+
+<span class="kw">impl</span>&lt;<span class="kw">const </span>N: usize&gt; IntoStrV <span class="kw">for </span>[String; N] {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>run_with_strv&lt;R, F: FnOnce(<span class="kw-2">&amp;</span>[<span class="kw-2">*mut </span>c_char]) -&gt; R&gt;(<span class="self">self</span>, f: F) -&gt; R {
+        <span class="self">self</span>.as_slice().run_with_strv(f)
+    }
+}
+
+<span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, <span class="kw">const </span>N: usize&gt; IntoStrV <span class="kw">for </span>[<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>String; N] {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>run_with_strv&lt;R, F: FnOnce(<span class="kw-2">&amp;</span>[<span class="kw-2">*mut </span>c_char]) -&gt; R&gt;(<span class="self">self</span>, f: F) -&gt; R {
+        <span class="self">self</span>.as_slice().run_with_strv(f)
     }
 }
 
@@ -3112,4 +3000,4 @@
     }
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.68.0-nightly (4c83bd03a 2023-01-19)" data-search-js="search-98d53477a794af0b.js" data-settings-js="settings-c3c521c753752a1a.js" data-settings-css="settings-ab1d4ae2ec52020e.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (2773383a3 2023-02-10)" data-search-js="search-28136cea55c34037.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/object.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>object.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-52c5db6f6f352e54.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-4743e13df3dfe8c4.css"><link rel="stylesheet" disabled href="../../static.files/dark-0e1b889528bd466b.css"><link rel="stylesheet" disabled href="../../static.files/ayu-65289d5d067c7c66.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-ea63cb6500f71309.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-3367e395607fafc1.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/object.rs`."><title>object.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-0ef3deca4ed45ad8.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-f501212b8b071243.css"><link rel="stylesheet" disabled href="../../static.files/dark-e92fc12c34ff89d3.css"><link rel="stylesheet" disabled href="../../static.files/ayu-a0090c8b1ced384f.css"><script src="../../static.files/storage-3891ce972e3a2bf8.js"></script><script defer src="../../static.files/source-script-ea63cb6500f71309.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-364b95f387bc3166.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -71,7 +71,7 @@
 </script>
 
 
-<nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../glib/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../glib/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -4582,13 +4582,6 @@
 <a href="#4509" id="4509">4509</a>
 <a href="#4510" id="4510">4510</a>
 <a href="#4511" id="4511">4511</a>
-<a href="#4512" id="4512">4512</a>
-<a href="#4513" id="4513">4513</a>
-<a href="#4514" id="4514">4514</a>
-<a href="#4515" id="4515">4515</a>
-<a href="#4516" id="4516">4516</a>
-<a href="#4517" id="4517">4517</a>
-<a href="#4518" id="4518">4518</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 // rustdoc-stripper-ignore-next
@@ -5469,6 +5462,7 @@
             <span class="attr">#[inline]
             #[allow(clippy::cast_ptr_alignment)]
             </span><span class="kw">unsafe fn </span>from_glib_none(ptr: <span class="kw-2">*mut </span><span class="macro-nonterminal">$ffi_name</span>) -&gt; <span class="self">Self </span>{
+                <span class="macro">debug_assert!</span>(!ptr.is_null());
                 <span class="macro">debug_assert!</span>(<span class="macro-nonterminal">$crate::types::instance_of</span>::&lt;<span class="self">Self</span>&gt;(ptr <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>));
                 <span class="macro-nonterminal">$name </span>{
                     inner: <span class="macro-nonterminal">$crate::object::TypedObjectRef::new</span>(<span class="macro-nonterminal">$crate::translate::from_glib_none</span>(ptr <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>)),
@@ -5482,6 +5476,7 @@
             <span class="attr">#[inline]
             #[allow(clippy::cast_ptr_alignment)]
             </span><span class="kw">unsafe fn </span>from_glib_none(ptr: <span class="kw-2">*const </span><span class="macro-nonterminal">$ffi_name</span>) -&gt; <span class="self">Self </span>{
+                <span class="macro">debug_assert!</span>(!ptr.is_null());
                 <span class="macro">debug_assert!</span>(<span class="macro-nonterminal">$crate::types::instance_of</span>::&lt;<span class="self">Self</span>&gt;(ptr <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>));
                 <span class="macro-nonterminal">$name </span>{
                     inner: <span class="macro-nonterminal">$crate::object::TypedObjectRef::new</span>(<span class="macro-nonterminal">$crate::translate::from_glib_none</span>(ptr <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>)),
@@ -5495,6 +5490,7 @@
             <span class="attr">#[inline]
             #[allow(clippy::cast_ptr_alignment)]
             </span><span class="kw">unsafe fn </span>from_glib_full(ptr: <span class="kw-2">*mut </span><span class="macro-nonterminal">$ffi_name</span>) -&gt; <span class="self">Self </span>{
+                <span class="macro">debug_assert!</span>(!ptr.is_null());
                 <span class="macro">debug_assert!</span>(<span class="macro-nonterminal">$crate::types::instance_of</span>::&lt;<span class="self">Self</span>&gt;(ptr <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>));
                 <span class="macro-nonterminal">$name </span>{
                     inner: <span class="macro-nonterminal">$crate::object::TypedObjectRef::new</span>(<span class="macro-nonterminal">$crate::translate::from_glib_full</span>(ptr <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>)),
@@ -5508,6 +5504,7 @@
             <span class="attr">#[inline]
             #[allow(clippy::cast_ptr_alignment)]
             </span><span class="kw">unsafe fn </span>from_glib_borrow(ptr: <span class="kw-2">*mut </span><span class="macro-nonterminal">$ffi_name</span>) -&gt; <span class="macro-nonterminal">$crate::translate::Borrowed</span>&lt;<span class="self">Self</span>&gt; {
+                <span class="macro">debug_assert!</span>(!ptr.is_null());
                 <span class="macro">debug_assert!</span>(<span class="macro-nonterminal">$crate::types::instance_of</span>::&lt;<span class="self">Self</span>&gt;(ptr <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>));
                 <span class="macro-nonterminal">$crate::translate::Borrowed::new</span>(
                     <span class="macro-nonterminal">$name </span>{
@@ -5708,6 +5705,16 @@
         }
 
         <span class="macro-nonterminal">$</span><span class="macro">crate::glib_object_wrapper!</span>(@<span class="macro-nonterminal">weak_impl $name </span>$(&lt;$(<span class="macro-nonterminal">$generic </span>$(: <span class="macro-nonterminal">$bound </span>$(+ <span class="macro-nonterminal">$bound2</span>)<span class="kw-2">*</span>)<span class="question-mark">?</span>),+&gt;)<span class="question-mark">?</span>);
+
+        <span class="kw">impl </span>$(&lt;$(<span class="macro-nonterminal">$generic </span>$(: <span class="macro-nonterminal">$bound </span>$(+ <span class="macro-nonterminal">$bound2</span>)<span class="kw-2">*</span>)<span class="question-mark">?</span>),+&gt;)<span class="question-mark">? </span><span class="macro-nonterminal">$crate::HasParamSpec </span><span class="kw">for </span><span class="macro-nonterminal">$name </span>$(&lt;$(<span class="macro-nonterminal">$generic</span>),+&gt;)<span class="question-mark">? </span>{
+            <span class="kw">type </span>ParamSpec = <span class="macro-nonterminal">$crate::ParamSpecObject</span>;
+            <span class="kw">type </span>SetValue = <span class="self">Self</span>;
+            <span class="kw">type </span>BuilderFn = <span class="kw">fn</span>(<span class="kw-2">&amp;</span>str) -&gt; <span class="macro-nonterminal">$crate::ParamSpecObjectBuilder</span>&lt;<span class="self">Self</span>&gt;;
+
+            <span class="kw">fn </span>param_spec_builder() -&gt; <span class="self">Self</span>::BuilderFn {
+                |name| <span class="self">Self</span>::ParamSpec::builder(name)
+            }
+        }
     };
 
     (@weak_impl <span class="macro-nonterminal">$name</span>:ident $(&lt;$(<span class="macro-nonterminal">$generic</span>:ident $(: <span class="macro-nonterminal">$bound</span>:tt $(+ <span class="macro-nonterminal">$bound2</span>:tt)<span class="kw-2">*</span>)<span class="question-mark">?</span>),+&gt;)<span class="question-mark">?</span>) =&gt; {
@@ -5935,29 +5942,39 @@
     <span class="kw">pub const </span>NONE: <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;static </span>Object&gt; = <span class="prelude-val">None</span>;
 
     <span class="comment">// rustdoc-stripper-ignore-next
-    </span><span class="doccomment">/// Create a new instance of an object with the given properties.
+    </span><span class="doccomment">/// Create a new instance of an object with the default property values.
     ///
     /// # Panics
     ///
-    /// This panics if the object is not instantiable, doesn&#39;t have all the given properties or
-    /// property values of the wrong type are provided.
-    </span><span class="attr">#[allow(clippy::new_ret_no_self)]
-    #[track_caller]
-    </span><span class="kw">pub fn </span>new&lt;T: IsA&lt;Object&gt; + IsClass&gt;(properties: <span class="kw-2">&amp;</span>[(<span class="kw-2">&amp;</span>str, <span class="kw-2">&amp;</span><span class="kw">dyn </span>ToValue)]) -&gt; T {
-        Object::with_type(T::static_type(), properties)
-            .downcast()
-            .unwrap()
+    /// This panics if the object is not instantiable.
+    </span><span class="attr">#[track_caller]
+    #[allow(clippy::new_ret_no_self)]
+    </span><span class="kw">pub fn </span>new&lt;T: IsA&lt;Object&gt; + IsClass&gt;() -&gt; T {
+        <span class="kw">let </span>object = Object::with_type(T::static_type());
+        <span class="kw">unsafe </span>{ object.unsafe_cast() }
     }
 
     <span class="comment">// rustdoc-stripper-ignore-next
-    </span><span class="doccomment">/// Create a new instance of an object of the given type with the given properties.
+    </span><span class="doccomment">/// Create a new instance of an object with the default property values.
+    ///
+    /// # Panics
+    ///
+    /// This panics if the object is not instantiable.
+    </span><span class="attr">#[track_caller]
+    </span><span class="kw">pub fn </span>with_type(type_: Type) -&gt; Object {
+        Object::with_mut_values(type_, <span class="kw-2">&amp;mut </span>[])
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next
+    </span><span class="doccomment">/// Create a new instance of an object of the given type with the given properties as mutable
+    /// values.
     ///
     /// # Panics
     ///
     /// This panics if the object is not instantiable, doesn&#39;t have all the given properties or
     /// property values of the wrong type are provided.
     </span><span class="attr">#[track_caller]
-    </span><span class="kw">pub fn </span>with_type(type_: Type, properties: <span class="kw-2">&amp;</span>[(<span class="kw-2">&amp;</span>str, <span class="kw-2">&amp;</span><span class="kw">dyn </span>ToValue)]) -&gt; Object {
+    </span><span class="kw">pub fn </span>with_mut_values(type_: Type, properties: <span class="kw-2">&amp;mut </span>[(<span class="kw-2">&amp;</span>str, Value)]) -&gt; Object {
         <span class="attr">#[cfg(feature = <span class="string">&quot;gio&quot;</span>)]
         </span><span class="kw">unsafe </span>{
             <span class="kw">let </span>iface_type = from_glib(gio_ffi::g_initable_get_type());
@@ -5970,42 +5987,7 @@
             }
         }
 
-        <span class="kw">let </span><span class="kw-2">mut </span>property_values = smallvec::SmallVec::&lt;[<span class="kw">_</span>; <span class="number">16</span>]&gt;::with_capacity(properties.len());
-        <span class="kw">for </span>(name, value) <span class="kw">in </span>properties {
-            property_values.push((<span class="kw-2">*</span>name, value.to_value()));
-        }
-
-        <span class="kw">unsafe </span>{ Object::new_internal(type_, <span class="kw-2">&amp;mut </span>property_values) }
-    }
-
-    <span class="comment">// rustdoc-stripper-ignore-next
-    </span><span class="doccomment">/// Create a new instance of an object of the given type with the given properties.
-    ///
-    /// # Panics
-    ///
-    /// This panics if the object is not instantiable, doesn&#39;t have all the given properties or
-    /// property values of the wrong type are provided.
-    </span><span class="attr">#[track_caller]
-    </span><span class="kw">pub fn </span>with_values(type_: Type, properties: <span class="kw-2">&amp;</span>[(<span class="kw-2">&amp;</span>str, Value)]) -&gt; Object {
-        <span class="attr">#[cfg(feature = <span class="string">&quot;gio&quot;</span>)]
-        </span><span class="kw">unsafe </span>{
-            <span class="kw">let </span>iface_type = from_glib(gio_ffi::g_initable_get_type());
-            <span class="kw">if </span>type_.is_a(iface_type) {
-                <span class="macro">panic!</span>(<span class="string">&quot;Can&#39;t instantiate type &#39;{type_}&#39; implementing `gio::Initable`. Use `gio::Initable::new()`&quot;</span>);
-            }
-            <span class="kw">let </span>iface_type = from_glib(gio_ffi::g_async_initable_get_type());
-            <span class="kw">if </span>type_.is_a(iface_type) {
-                <span class="macro">panic!</span>(<span class="string">&quot;Can&#39;t instantiate type &#39;{type_}&#39; implementing `gio::AsyncInitable`. Use `gio::AsyncInitable::new()`&quot;</span>);
-            }
-        }
-
-        <span class="kw">let </span><span class="kw-2">mut </span>property_values = smallvec::SmallVec::&lt;[<span class="kw">_</span>; <span class="number">16</span>]&gt;::with_capacity(properties.len());
-        <span class="kw">for </span>(name, value) <span class="kw">in </span>properties {
-            <span class="comment">// FIXME&gt; This cloning can be avoided with GLib 2.74, see below.
-            </span>property_values.push((<span class="kw-2">*</span>name, value.clone()));
-        }
-
-        <span class="kw">unsafe </span>{ Object::new_internal(type_, <span class="kw-2">&amp;mut </span>property_values) }
+        <span class="kw">unsafe </span>{ Object::new_internal(type_, properties) }
     }
 
     <span class="comment">// rustdoc-stripper-ignore-next
@@ -6105,27 +6087,30 @@
 <span class="attr">#[must_use = <span class="string">&quot;builder doesn&#39;t do anything unless built&quot;</span>]
 </span><span class="kw">pub struct </span>ObjectBuilder&lt;<span class="lifetime">&#39;a</span>, O&gt; {
     type_: Type,
-    properties: Vec&lt;(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str, Value)&gt;,
+    properties: smallvec::SmallVec&lt;[(<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str, Value); <span class="number">16</span>]&gt;,
     phantom: PhantomData&lt;O&gt;,
 }
 
 <span class="kw">impl</span>&lt;<span class="lifetime">&#39;a</span>, O: IsA&lt;Object&gt; + IsClass&gt; ObjectBuilder&lt;<span class="lifetime">&#39;a</span>, O&gt; {
-    <span class="kw">fn </span>new(type_: Type) -&gt; <span class="self">Self </span>{
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>new(type_: Type) -&gt; <span class="self">Self </span>{
         ObjectBuilder {
             type_,
-            properties: <span class="macro">vec!</span>[],
+            properties: smallvec::SmallVec::new(),
             phantom: PhantomData,
         }
     }
 
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Gets the type of this builder.
+    </span><span class="attr">#[inline]
     </span><span class="kw">pub fn </span>type_(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; Type {
         <span class="self">self</span>.type_
     }
 
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Set property `name` to the given value `value`.
+    </span><span class="attr">#[inline]
     </span><span class="kw">pub fn </span>property(<span class="self">self</span>, name: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>str, value: <span class="kw">impl </span>Into&lt;Value&gt;) -&gt; <span class="self">Self </span>{
         <span class="kw">let </span>ObjectBuilder {
             type_,
@@ -6149,8 +6134,9 @@
     /// This panics if the object is not instantiable, doesn&#39;t have all the given properties or
     /// property values of the wrong type are provided.
     </span><span class="attr">#[track_caller]
-    </span><span class="kw">pub fn </span>build(<span class="self">self</span>) -&gt; O {
-        <span class="kw">let </span>object = Object::with_values(<span class="self">self</span>.type_, <span class="kw-2">&amp;</span><span class="self">self</span>.properties);
+    #[inline]
+    </span><span class="kw">pub fn </span>build(<span class="kw-2">mut </span><span class="self">self</span>) -&gt; O {
+        <span class="kw">let </span>object = Object::with_mut_values(<span class="self">self</span>.type_, <span class="kw-2">&amp;mut </span><span class="self">self</span>.properties);
         <span class="kw">unsafe </span>{ object.unsafe_cast::&lt;O&gt;() }
     }
 }
@@ -9010,13 +8996,13 @@
 
     <span class="attr">#[test]
     </span><span class="kw">fn </span>new() {
-        <span class="kw">let </span>obj: Object = Object::new(<span class="kw-2">&amp;</span>[]);
+        <span class="kw">let </span>obj: Object = Object::new();
         drop(obj);
     }
 
     <span class="attr">#[test]
     </span><span class="kw">fn </span>data() {
-        <span class="kw">let </span>obj: Object = Object::new(<span class="kw-2">&amp;</span>[]);
+        <span class="kw">let </span>obj: Object = Object::new();
         <span class="kw">unsafe </span>{
             obj.set_data::&lt;String&gt;(<span class="string">&quot;foo&quot;</span>, <span class="string">&quot;hello&quot;</span>.into());
             <span class="kw">let </span>data = obj.data::&lt;String&gt;(<span class="string">&quot;foo&quot;</span>).unwrap();
@@ -9028,7 +9014,7 @@
 
     <span class="attr">#[test]
     </span><span class="kw">fn </span>weak_ref() {
-        <span class="kw">let </span>obj: Object = Object::new(<span class="kw-2">&amp;</span>[]);
+        <span class="kw">let </span>obj: Object = Object::new();
 
         <span class="kw">let </span>weakref: WeakRef&lt;Object&gt; = WeakRef::new();
         weakref.set(<span class="prelude-val">Some</span>(<span class="kw-2">&amp;</span>obj));
@@ -9046,7 +9032,7 @@
 
     <span class="attr">#[test]
     </span><span class="kw">fn </span>weak_ref_notify() {
-        <span class="kw">let </span>obj: Object = Object::new(<span class="kw-2">&amp;</span>[]);
+        <span class="kw">let </span>obj: Object = Object::new();
 
         <span class="kw">let </span>handle = obj.add_weak_ref_notify(|| {
             <span class="macro">unreachable!</span>();
@@ -9064,7 +9050,7 @@
         <span class="macro">assert!</span>(called.load(Ordering::SeqCst));
         handle.disconnect();
 
-        <span class="kw">let </span>obj: Object = Object::new(<span class="kw-2">&amp;</span>[]);
+        <span class="kw">let </span>obj: Object = Object::new();
 
         <span class="kw">let </span>called = Arc::new(AtomicBool::new(<span class="bool-val">false</span>));
         <span class="kw">let </span>called_weak = Arc::downgrade(<span class="kw-2">&amp;</span>called);
@@ -9075,7 +9061,7 @@
         drop(obj);
         <span class="macro">assert!</span>(called.load(Ordering::SeqCst));
 
-        <span class="kw">let </span>obj: Object = Object::new(<span class="kw-2">&amp;</span>[]);
+        <span class="kw">let </span>obj: Object = Object::new();
 
         <span class="kw">let </span>called = Rc::new(Cell::new(<span class="bool-val">false</span>));
         <span class="kw">let </span>called_weak = Rc::downgrade(<span class="kw-2">&amp;</span>called);
@@ -9089,7 +9075,7 @@
 
     <span class="attr">#[test]
     </span><span class="kw">fn </span>test_value() {
-        <span class="kw">let </span>obj1: Object = Object::new(<span class="kw-2">&amp;</span>[]);
+        <span class="kw">let </span>obj1: Object = Object::new();
         <span class="kw">let </span>v = obj1.to_value();
         <span class="kw">let </span>obj2 = v.get::&lt;<span class="kw-2">&amp;</span>Object&gt;().unwrap();
 
@@ -9108,4 +9094,4 @@
     }
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.68.0-nightly (4c83bd03a 2023-01-19)" data-search-js="search-98d53477a794af0b.js" data-settings-js="settings-c3c521c753752a1a.js" data-settings-css="settings-ab1d4ae2ec52020e.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (2773383a3 2023-02-10)" data-search-js="search-28136cea55c34037.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>

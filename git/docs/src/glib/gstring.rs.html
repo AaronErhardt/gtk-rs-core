@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/gstring.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>gstring.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-1f7d512b176f0f72.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-124a1ca42af929b6.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-52c5db6f6f352e54.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-4743e13df3dfe8c4.css"><link rel="stylesheet" disabled href="../../static.files/dark-0e1b889528bd466b.css"><link rel="stylesheet" disabled href="../../static.files/ayu-65289d5d067c7c66.css"><script id="default-settings" ></script><script src="../../static.files/storage-d43fa987303ecbbb.js"></script><script defer src="../../static.files/source-script-ea63cb6500f71309.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-3367e395607fafc1.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib/src/gstring.rs`."><title>gstring.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-0ef3deca4ed45ad8.css" id="mainThemeStyle"><link rel="stylesheet" id="themeStyle" href="../../static.files/light-f501212b8b071243.css"><link rel="stylesheet" disabled href="../../static.files/dark-e92fc12c34ff89d3.css"><link rel="stylesheet" disabled href="../../static.files/ayu-a0090c8b1ced384f.css"><script src="../../static.files/storage-3891ce972e3a2bf8.js"></script><script defer src="../../static.files/source-script-ea63cb6500f71309.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-364b95f387bc3166.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -71,7 +71,7 @@
 </script>
 
 
-<nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../glib/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-5ec35bf9ca753509.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../glib/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -2236,6 +2236,352 @@
 <a href="#2163" id="2163">2163</a>
 <a href="#2164" id="2164">2164</a>
 <a href="#2165" id="2165">2165</a>
+<a href="#2166" id="2166">2166</a>
+<a href="#2167" id="2167">2167</a>
+<a href="#2168" id="2168">2168</a>
+<a href="#2169" id="2169">2169</a>
+<a href="#2170" id="2170">2170</a>
+<a href="#2171" id="2171">2171</a>
+<a href="#2172" id="2172">2172</a>
+<a href="#2173" id="2173">2173</a>
+<a href="#2174" id="2174">2174</a>
+<a href="#2175" id="2175">2175</a>
+<a href="#2176" id="2176">2176</a>
+<a href="#2177" id="2177">2177</a>
+<a href="#2178" id="2178">2178</a>
+<a href="#2179" id="2179">2179</a>
+<a href="#2180" id="2180">2180</a>
+<a href="#2181" id="2181">2181</a>
+<a href="#2182" id="2182">2182</a>
+<a href="#2183" id="2183">2183</a>
+<a href="#2184" id="2184">2184</a>
+<a href="#2185" id="2185">2185</a>
+<a href="#2186" id="2186">2186</a>
+<a href="#2187" id="2187">2187</a>
+<a href="#2188" id="2188">2188</a>
+<a href="#2189" id="2189">2189</a>
+<a href="#2190" id="2190">2190</a>
+<a href="#2191" id="2191">2191</a>
+<a href="#2192" id="2192">2192</a>
+<a href="#2193" id="2193">2193</a>
+<a href="#2194" id="2194">2194</a>
+<a href="#2195" id="2195">2195</a>
+<a href="#2196" id="2196">2196</a>
+<a href="#2197" id="2197">2197</a>
+<a href="#2198" id="2198">2198</a>
+<a href="#2199" id="2199">2199</a>
+<a href="#2200" id="2200">2200</a>
+<a href="#2201" id="2201">2201</a>
+<a href="#2202" id="2202">2202</a>
+<a href="#2203" id="2203">2203</a>
+<a href="#2204" id="2204">2204</a>
+<a href="#2205" id="2205">2205</a>
+<a href="#2206" id="2206">2206</a>
+<a href="#2207" id="2207">2207</a>
+<a href="#2208" id="2208">2208</a>
+<a href="#2209" id="2209">2209</a>
+<a href="#2210" id="2210">2210</a>
+<a href="#2211" id="2211">2211</a>
+<a href="#2212" id="2212">2212</a>
+<a href="#2213" id="2213">2213</a>
+<a href="#2214" id="2214">2214</a>
+<a href="#2215" id="2215">2215</a>
+<a href="#2216" id="2216">2216</a>
+<a href="#2217" id="2217">2217</a>
+<a href="#2218" id="2218">2218</a>
+<a href="#2219" id="2219">2219</a>
+<a href="#2220" id="2220">2220</a>
+<a href="#2221" id="2221">2221</a>
+<a href="#2222" id="2222">2222</a>
+<a href="#2223" id="2223">2223</a>
+<a href="#2224" id="2224">2224</a>
+<a href="#2225" id="2225">2225</a>
+<a href="#2226" id="2226">2226</a>
+<a href="#2227" id="2227">2227</a>
+<a href="#2228" id="2228">2228</a>
+<a href="#2229" id="2229">2229</a>
+<a href="#2230" id="2230">2230</a>
+<a href="#2231" id="2231">2231</a>
+<a href="#2232" id="2232">2232</a>
+<a href="#2233" id="2233">2233</a>
+<a href="#2234" id="2234">2234</a>
+<a href="#2235" id="2235">2235</a>
+<a href="#2236" id="2236">2236</a>
+<a href="#2237" id="2237">2237</a>
+<a href="#2238" id="2238">2238</a>
+<a href="#2239" id="2239">2239</a>
+<a href="#2240" id="2240">2240</a>
+<a href="#2241" id="2241">2241</a>
+<a href="#2242" id="2242">2242</a>
+<a href="#2243" id="2243">2243</a>
+<a href="#2244" id="2244">2244</a>
+<a href="#2245" id="2245">2245</a>
+<a href="#2246" id="2246">2246</a>
+<a href="#2247" id="2247">2247</a>
+<a href="#2248" id="2248">2248</a>
+<a href="#2249" id="2249">2249</a>
+<a href="#2250" id="2250">2250</a>
+<a href="#2251" id="2251">2251</a>
+<a href="#2252" id="2252">2252</a>
+<a href="#2253" id="2253">2253</a>
+<a href="#2254" id="2254">2254</a>
+<a href="#2255" id="2255">2255</a>
+<a href="#2256" id="2256">2256</a>
+<a href="#2257" id="2257">2257</a>
+<a href="#2258" id="2258">2258</a>
+<a href="#2259" id="2259">2259</a>
+<a href="#2260" id="2260">2260</a>
+<a href="#2261" id="2261">2261</a>
+<a href="#2262" id="2262">2262</a>
+<a href="#2263" id="2263">2263</a>
+<a href="#2264" id="2264">2264</a>
+<a href="#2265" id="2265">2265</a>
+<a href="#2266" id="2266">2266</a>
+<a href="#2267" id="2267">2267</a>
+<a href="#2268" id="2268">2268</a>
+<a href="#2269" id="2269">2269</a>
+<a href="#2270" id="2270">2270</a>
+<a href="#2271" id="2271">2271</a>
+<a href="#2272" id="2272">2272</a>
+<a href="#2273" id="2273">2273</a>
+<a href="#2274" id="2274">2274</a>
+<a href="#2275" id="2275">2275</a>
+<a href="#2276" id="2276">2276</a>
+<a href="#2277" id="2277">2277</a>
+<a href="#2278" id="2278">2278</a>
+<a href="#2279" id="2279">2279</a>
+<a href="#2280" id="2280">2280</a>
+<a href="#2281" id="2281">2281</a>
+<a href="#2282" id="2282">2282</a>
+<a href="#2283" id="2283">2283</a>
+<a href="#2284" id="2284">2284</a>
+<a href="#2285" id="2285">2285</a>
+<a href="#2286" id="2286">2286</a>
+<a href="#2287" id="2287">2287</a>
+<a href="#2288" id="2288">2288</a>
+<a href="#2289" id="2289">2289</a>
+<a href="#2290" id="2290">2290</a>
+<a href="#2291" id="2291">2291</a>
+<a href="#2292" id="2292">2292</a>
+<a href="#2293" id="2293">2293</a>
+<a href="#2294" id="2294">2294</a>
+<a href="#2295" id="2295">2295</a>
+<a href="#2296" id="2296">2296</a>
+<a href="#2297" id="2297">2297</a>
+<a href="#2298" id="2298">2298</a>
+<a href="#2299" id="2299">2299</a>
+<a href="#2300" id="2300">2300</a>
+<a href="#2301" id="2301">2301</a>
+<a href="#2302" id="2302">2302</a>
+<a href="#2303" id="2303">2303</a>
+<a href="#2304" id="2304">2304</a>
+<a href="#2305" id="2305">2305</a>
+<a href="#2306" id="2306">2306</a>
+<a href="#2307" id="2307">2307</a>
+<a href="#2308" id="2308">2308</a>
+<a href="#2309" id="2309">2309</a>
+<a href="#2310" id="2310">2310</a>
+<a href="#2311" id="2311">2311</a>
+<a href="#2312" id="2312">2312</a>
+<a href="#2313" id="2313">2313</a>
+<a href="#2314" id="2314">2314</a>
+<a href="#2315" id="2315">2315</a>
+<a href="#2316" id="2316">2316</a>
+<a href="#2317" id="2317">2317</a>
+<a href="#2318" id="2318">2318</a>
+<a href="#2319" id="2319">2319</a>
+<a href="#2320" id="2320">2320</a>
+<a href="#2321" id="2321">2321</a>
+<a href="#2322" id="2322">2322</a>
+<a href="#2323" id="2323">2323</a>
+<a href="#2324" id="2324">2324</a>
+<a href="#2325" id="2325">2325</a>
+<a href="#2326" id="2326">2326</a>
+<a href="#2327" id="2327">2327</a>
+<a href="#2328" id="2328">2328</a>
+<a href="#2329" id="2329">2329</a>
+<a href="#2330" id="2330">2330</a>
+<a href="#2331" id="2331">2331</a>
+<a href="#2332" id="2332">2332</a>
+<a href="#2333" id="2333">2333</a>
+<a href="#2334" id="2334">2334</a>
+<a href="#2335" id="2335">2335</a>
+<a href="#2336" id="2336">2336</a>
+<a href="#2337" id="2337">2337</a>
+<a href="#2338" id="2338">2338</a>
+<a href="#2339" id="2339">2339</a>
+<a href="#2340" id="2340">2340</a>
+<a href="#2341" id="2341">2341</a>
+<a href="#2342" id="2342">2342</a>
+<a href="#2343" id="2343">2343</a>
+<a href="#2344" id="2344">2344</a>
+<a href="#2345" id="2345">2345</a>
+<a href="#2346" id="2346">2346</a>
+<a href="#2347" id="2347">2347</a>
+<a href="#2348" id="2348">2348</a>
+<a href="#2349" id="2349">2349</a>
+<a href="#2350" id="2350">2350</a>
+<a href="#2351" id="2351">2351</a>
+<a href="#2352" id="2352">2352</a>
+<a href="#2353" id="2353">2353</a>
+<a href="#2354" id="2354">2354</a>
+<a href="#2355" id="2355">2355</a>
+<a href="#2356" id="2356">2356</a>
+<a href="#2357" id="2357">2357</a>
+<a href="#2358" id="2358">2358</a>
+<a href="#2359" id="2359">2359</a>
+<a href="#2360" id="2360">2360</a>
+<a href="#2361" id="2361">2361</a>
+<a href="#2362" id="2362">2362</a>
+<a href="#2363" id="2363">2363</a>
+<a href="#2364" id="2364">2364</a>
+<a href="#2365" id="2365">2365</a>
+<a href="#2366" id="2366">2366</a>
+<a href="#2367" id="2367">2367</a>
+<a href="#2368" id="2368">2368</a>
+<a href="#2369" id="2369">2369</a>
+<a href="#2370" id="2370">2370</a>
+<a href="#2371" id="2371">2371</a>
+<a href="#2372" id="2372">2372</a>
+<a href="#2373" id="2373">2373</a>
+<a href="#2374" id="2374">2374</a>
+<a href="#2375" id="2375">2375</a>
+<a href="#2376" id="2376">2376</a>
+<a href="#2377" id="2377">2377</a>
+<a href="#2378" id="2378">2378</a>
+<a href="#2379" id="2379">2379</a>
+<a href="#2380" id="2380">2380</a>
+<a href="#2381" id="2381">2381</a>
+<a href="#2382" id="2382">2382</a>
+<a href="#2383" id="2383">2383</a>
+<a href="#2384" id="2384">2384</a>
+<a href="#2385" id="2385">2385</a>
+<a href="#2386" id="2386">2386</a>
+<a href="#2387" id="2387">2387</a>
+<a href="#2388" id="2388">2388</a>
+<a href="#2389" id="2389">2389</a>
+<a href="#2390" id="2390">2390</a>
+<a href="#2391" id="2391">2391</a>
+<a href="#2392" id="2392">2392</a>
+<a href="#2393" id="2393">2393</a>
+<a href="#2394" id="2394">2394</a>
+<a href="#2395" id="2395">2395</a>
+<a href="#2396" id="2396">2396</a>
+<a href="#2397" id="2397">2397</a>
+<a href="#2398" id="2398">2398</a>
+<a href="#2399" id="2399">2399</a>
+<a href="#2400" id="2400">2400</a>
+<a href="#2401" id="2401">2401</a>
+<a href="#2402" id="2402">2402</a>
+<a href="#2403" id="2403">2403</a>
+<a href="#2404" id="2404">2404</a>
+<a href="#2405" id="2405">2405</a>
+<a href="#2406" id="2406">2406</a>
+<a href="#2407" id="2407">2407</a>
+<a href="#2408" id="2408">2408</a>
+<a href="#2409" id="2409">2409</a>
+<a href="#2410" id="2410">2410</a>
+<a href="#2411" id="2411">2411</a>
+<a href="#2412" id="2412">2412</a>
+<a href="#2413" id="2413">2413</a>
+<a href="#2414" id="2414">2414</a>
+<a href="#2415" id="2415">2415</a>
+<a href="#2416" id="2416">2416</a>
+<a href="#2417" id="2417">2417</a>
+<a href="#2418" id="2418">2418</a>
+<a href="#2419" id="2419">2419</a>
+<a href="#2420" id="2420">2420</a>
+<a href="#2421" id="2421">2421</a>
+<a href="#2422" id="2422">2422</a>
+<a href="#2423" id="2423">2423</a>
+<a href="#2424" id="2424">2424</a>
+<a href="#2425" id="2425">2425</a>
+<a href="#2426" id="2426">2426</a>
+<a href="#2427" id="2427">2427</a>
+<a href="#2428" id="2428">2428</a>
+<a href="#2429" id="2429">2429</a>
+<a href="#2430" id="2430">2430</a>
+<a href="#2431" id="2431">2431</a>
+<a href="#2432" id="2432">2432</a>
+<a href="#2433" id="2433">2433</a>
+<a href="#2434" id="2434">2434</a>
+<a href="#2435" id="2435">2435</a>
+<a href="#2436" id="2436">2436</a>
+<a href="#2437" id="2437">2437</a>
+<a href="#2438" id="2438">2438</a>
+<a href="#2439" id="2439">2439</a>
+<a href="#2440" id="2440">2440</a>
+<a href="#2441" id="2441">2441</a>
+<a href="#2442" id="2442">2442</a>
+<a href="#2443" id="2443">2443</a>
+<a href="#2444" id="2444">2444</a>
+<a href="#2445" id="2445">2445</a>
+<a href="#2446" id="2446">2446</a>
+<a href="#2447" id="2447">2447</a>
+<a href="#2448" id="2448">2448</a>
+<a href="#2449" id="2449">2449</a>
+<a href="#2450" id="2450">2450</a>
+<a href="#2451" id="2451">2451</a>
+<a href="#2452" id="2452">2452</a>
+<a href="#2453" id="2453">2453</a>
+<a href="#2454" id="2454">2454</a>
+<a href="#2455" id="2455">2455</a>
+<a href="#2456" id="2456">2456</a>
+<a href="#2457" id="2457">2457</a>
+<a href="#2458" id="2458">2458</a>
+<a href="#2459" id="2459">2459</a>
+<a href="#2460" id="2460">2460</a>
+<a href="#2461" id="2461">2461</a>
+<a href="#2462" id="2462">2462</a>
+<a href="#2463" id="2463">2463</a>
+<a href="#2464" id="2464">2464</a>
+<a href="#2465" id="2465">2465</a>
+<a href="#2466" id="2466">2466</a>
+<a href="#2467" id="2467">2467</a>
+<a href="#2468" id="2468">2468</a>
+<a href="#2469" id="2469">2469</a>
+<a href="#2470" id="2470">2470</a>
+<a href="#2471" id="2471">2471</a>
+<a href="#2472" id="2472">2472</a>
+<a href="#2473" id="2473">2473</a>
+<a href="#2474" id="2474">2474</a>
+<a href="#2475" id="2475">2475</a>
+<a href="#2476" id="2476">2476</a>
+<a href="#2477" id="2477">2477</a>
+<a href="#2478" id="2478">2478</a>
+<a href="#2479" id="2479">2479</a>
+<a href="#2480" id="2480">2480</a>
+<a href="#2481" id="2481">2481</a>
+<a href="#2482" id="2482">2482</a>
+<a href="#2483" id="2483">2483</a>
+<a href="#2484" id="2484">2484</a>
+<a href="#2485" id="2485">2485</a>
+<a href="#2486" id="2486">2486</a>
+<a href="#2487" id="2487">2487</a>
+<a href="#2488" id="2488">2488</a>
+<a href="#2489" id="2489">2489</a>
+<a href="#2490" id="2490">2490</a>
+<a href="#2491" id="2491">2491</a>
+<a href="#2492" id="2492">2492</a>
+<a href="#2493" id="2493">2493</a>
+<a href="#2494" id="2494">2494</a>
+<a href="#2495" id="2495">2495</a>
+<a href="#2496" id="2496">2496</a>
+<a href="#2497" id="2497">2497</a>
+<a href="#2498" id="2498">2498</a>
+<a href="#2499" id="2499">2499</a>
+<a href="#2500" id="2500">2500</a>
+<a href="#2501" id="2501">2501</a>
+<a href="#2502" id="2502">2502</a>
+<a href="#2503" id="2503">2503</a>
+<a href="#2504" id="2504">2504</a>
+<a href="#2505" id="2505">2505</a>
+<a href="#2506" id="2506">2506</a>
+<a href="#2507" id="2507">2507</a>
+<a href="#2508" id="2508">2508</a>
+<a href="#2509" id="2509">2509</a>
+<a href="#2510" id="2510">2510</a>
+<a href="#2511" id="2511">2511</a>
 </pre><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span>std::{
@@ -2258,8 +2604,7 @@
 ///
 /// This type is very similar to [`std::ffi::CStr`], but with one added constraint: the string
 /// must also be valid UTF-8.
-</span><span class="attr">#[derive(Debug, Eq, Hash, Ord, PartialEq, PartialOrd)]
-#[repr(transparent)]
+</span><span class="attr">#[repr(transparent)]
 </span><span class="kw">pub struct </span>GStr(str);
 
 <span class="kw">impl </span>GStr {
@@ -2383,16 +2728,29 @@
     </span><span class="doccomment">/// Wraps a raw C string with a safe GLib string wrapper. The provided C string **must** be
     /// nul-terminated. All constraints from [`std::ffi::CStr::from_ptr`] also apply here.
     ///
+    /// If the string is valid UTF-8 then it is directly returned, otherwise `None` is returned.
+    </span><span class="attr">#[inline]
+    </span><span class="kw">pub unsafe fn </span>from_ptr_checked&lt;<span class="lifetime">&#39;a</span>&gt;(ptr: <span class="kw-2">*const </span>c_char) -&gt; <span class="prelude-ty">Option</span>&lt;<span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span><span class="self">Self</span>&gt; {
+        <span class="kw">let </span><span class="kw-2">mut </span>end_ptr = ptr::null();
+        <span class="kw">if </span>ffi::g_utf8_validate(ptr <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>, -<span class="number">1</span>, <span class="kw-2">&amp;mut </span>end_ptr) != ffi::GFALSE {
+            <span class="prelude-val">Some</span>(<span class="self">Self</span>::from_utf8_with_nul_unchecked(slice::from_raw_parts(
+                ptr <span class="kw">as </span><span class="kw-2">*const </span>u8,
+                end_ptr.offset_from(ptr) <span class="kw">as </span>usize + <span class="number">1</span>,
+            )))
+        } <span class="kw">else </span>{
+            <span class="prelude-val">None
+        </span>}
+    }
+    <span class="comment">// rustdoc-stripper-ignore-next
+    </span><span class="doccomment">/// Wraps a raw C string with a safe GLib string wrapper. The provided C string **must** be
+    /// nul-terminated. All constraints from [`std::ffi::CStr::from_ptr`] also apply here.
+    ///
     /// If the string is valid UTF-8 then it is directly returned otherwise a copy is created with
     /// every invalid character replaced by the Unicode replacement character (U+FFFD).
     </span><span class="attr">#[inline]
     </span><span class="kw">pub unsafe fn </span>from_ptr_lossy&lt;<span class="lifetime">&#39;a</span>&gt;(ptr: <span class="kw-2">*const </span>c_char) -&gt; Cow&lt;<span class="lifetime">&#39;a</span>, <span class="self">Self</span>&gt; {
-        <span class="kw">let </span><span class="kw-2">mut </span>end_ptr = ptr::null();
-        <span class="kw">if </span>ffi::g_utf8_validate(ptr <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>, -<span class="number">1</span>, <span class="kw-2">&amp;mut </span>end_ptr) != ffi::GFALSE {
-            Cow::Borrowed(<span class="self">Self</span>::from_utf8_with_nul_unchecked(slice::from_raw_parts(
-                ptr <span class="kw">as </span><span class="kw-2">*const </span>u8,
-                end_ptr.offset_from(ptr) <span class="kw">as </span>usize + <span class="number">1</span>,
-            )))
+        <span class="kw">if let </span><span class="prelude-val">Some</span>(gs) = <span class="self">Self</span>::from_ptr_checked(ptr) {
+            Cow::Borrowed(gs)
         } <span class="kw">else </span>{
             Cow::Owned(GString::from_glib_full(ffi::g_utf8_make_valid(
                 ptr <span class="kw">as </span><span class="kw-2">*const </span><span class="kw">_</span>,
@@ -2569,6 +2927,43 @@
     (<span class="macro-nonterminal">$s</span>:literal) =&gt; {
         <span class="kw">unsafe </span>{ <span class="macro-nonterminal">$crate::GStr::from_utf8_with_nul_unchecked</span>(<span class="macro-nonterminal">$</span><span class="macro">crate::cstr_bytes!</span>(<span class="macro-nonterminal">$s</span>)) }
     };
+}
+
+<span class="kw">impl </span>fmt::Debug <span class="kw">for </span>GStr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+        &lt;<span class="kw-2">&amp;</span>str <span class="kw">as </span>fmt::Debug&gt;::fmt(<span class="kw-2">&amp;</span><span class="self">self</span>.as_str(), f)
+    }
+}
+
+<span class="kw">impl </span>PartialEq <span class="kw">for </span>GStr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span><span class="self">Self</span>) -&gt; bool {
+        <span class="self">self</span>.as_str().eq(other.as_str())
+    }
+}
+
+<span class="kw">impl </span>Eq <span class="kw">for </span>GStr {}
+
+<span class="kw">impl </span>PartialOrd <span class="kw">for </span>GStr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span><span class="self">Self</span>) -&gt; <span class="prelude-ty">Option</span>&lt;Ordering&gt; {
+        <span class="self">self</span>.as_str().partial_cmp(other.as_str())
+    }
+}
+
+<span class="kw">impl </span>Ord <span class="kw">for </span>GStr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span><span class="self">Self</span>) -&gt; Ordering {
+        <span class="self">self</span>.as_str().cmp(other.as_str())
+    }
+}
+
+<span class="kw">impl </span>hash::Hash <span class="kw">for </span>GStr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>hash&lt;H: hash::Hasher&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, state: <span class="kw-2">&amp;mut </span>H) {
+        <span class="self">self</span>.as_str().hash(state)
+    }
 }
 
 <span class="kw">impl </span>Default <span class="kw">for </span><span class="kw-2">&amp;</span>GStr {
@@ -2854,6 +3249,296 @@
     <span class="attr">#[inline]
     </span><span class="kw">fn </span>to_glib_full(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*mut </span>c_char {
         <span class="self">self</span>.as_str().to_glib_full()
+    }
+}
+
+<span class="comment">// rustdoc-stripper-ignore-next
+</span><span class="doccomment">/// `NULL`-terminated UTF-8 string as stored in [`StrV`].
+///
+/// Unlike [`&amp;GStr`] this does not have its length stored.
+</span><span class="attr">#[repr(transparent)]
+</span><span class="kw">pub struct </span>GStringPtr(ptr::NonNull&lt;c_char&gt;);
+
+<span class="attr">#[doc(hidden)]
+</span><span class="kw">unsafe impl </span>TransparentPtrType <span class="kw">for </span>GStringPtr {}
+
+<span class="attr">#[doc(hidden)]
+</span><span class="kw">impl </span>GlibPtrDefault <span class="kw">for </span>GStringPtr {
+    <span class="kw">type </span>GlibType = <span class="kw-2">*mut </span>c_char;
+}
+
+<span class="kw">impl </span>GStringPtr {
+    <span class="comment">// rustdoc-stripper-ignore-next
+    </span><span class="doccomment">/// Returns the corresponding [`&amp;GStr`].
+    </span><span class="attr">#[inline]
+    </span><span class="kw">pub fn </span>to_gstr(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>GStr {
+        <span class="kw">unsafe </span>{ GStr::from_ptr(<span class="self">self</span>.<span class="number">0</span>.as_ptr()) }
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next
+    </span><span class="doccomment">/// Returns the corresponding [`&amp;str`].
+    </span><span class="attr">#[inline]
+    </span><span class="kw">pub fn </span>to_str(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>str {
+        <span class="self">self</span>.to_gstr().as_str()
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next
+    </span><span class="doccomment">/// Returns the string&#39;s C pointer.
+    </span><span class="attr">#[inline]
+    </span><span class="kw">pub const fn </span>as_ptr(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">*const </span>c_char {
+        <span class="self">self</span>.<span class="number">0</span>.as_ptr()
+    }
+
+    <span class="comment">// rustdoc-stripper-ignore-next
+    </span><span class="doccomment">/// Wrapper around `libc::strcmp` returning `Ordering`.
+    ///
+    /// # Safety
+    ///
+    /// `a` and `b` must be non-null pointers to nul-terminated C strings.
+    </span><span class="attr">#[inline]
+    </span><span class="kw">unsafe fn </span>strcmp(a: <span class="kw-2">*const </span>c_char, b: <span class="kw-2">*const </span>c_char) -&gt; Ordering {
+        from_glib(libc::strcmp(a, b))
+    }
+}
+
+<span class="kw">impl </span>Clone <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>clone(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; GStringPtr {
+        <span class="kw">unsafe </span>{ GStringPtr(ptr::NonNull::new_unchecked(ffi::g_strdup(<span class="self">self</span>.<span class="number">0</span>.as_ptr()))) }
+    }
+}
+
+<span class="kw">impl </span>IntoGlibPtr&lt;<span class="kw-2">*mut </span>c_char&gt; <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">unsafe fn </span>into_glib_ptr(<span class="self">self</span>) -&gt; <span class="kw-2">*mut </span>c_char {
+        <span class="self">self</span>.<span class="number">0</span>.as_ptr()
+    }
+}
+
+<span class="kw">impl </span>Drop <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>drop(<span class="kw-2">&amp;mut </span><span class="self">self</span>) {
+        <span class="kw">unsafe </span>{
+            ffi::g_free(<span class="self">self</span>.<span class="number">0</span>.as_ptr() <span class="kw">as </span><span class="kw-2">*mut </span><span class="kw">_</span>);
+        }
+    }
+}
+
+<span class="kw">impl </span>fmt::Debug <span class="kw">for </span>GStringPtr {
+    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter&lt;<span class="lifetime">&#39;_</span>&gt;) -&gt; fmt::Result {
+        &lt;<span class="kw-2">&amp;</span>GStr <span class="kw">as </span>fmt::Debug&gt;::fmt(<span class="kw-2">&amp;</span><span class="self">self</span>.to_gstr(), f)
+    }
+}
+
+<span class="kw">impl </span>fmt::Display <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {
+        f.write_str(<span class="self">self</span>.to_str())
+    }
+}
+
+<span class="kw">impl </span>Eq <span class="kw">for </span>GStringPtr {}
+
+<span class="kw">impl </span>PartialEq <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GStringPtr) -&gt; bool {
+        <span class="self">self</span>.partial_cmp(other) == <span class="prelude-val">Some</span>(Ordering::Equal)
+    }
+}
+
+<span class="kw">impl </span>PartialEq&lt;GStringPtr&gt; <span class="kw">for </span>String {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GStringPtr) -&gt; bool {
+        <span class="self">self</span>.partial_cmp(other) == <span class="prelude-val">Some</span>(Ordering::Equal)
+    }
+}
+
+<span class="kw">impl </span>PartialEq&lt;GStringPtr&gt; <span class="kw">for </span>GString {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GStringPtr) -&gt; bool {
+        <span class="self">self</span>.partial_cmp(other) == <span class="prelude-val">Some</span>(Ordering::Equal)
+    }
+}
+
+<span class="kw">impl </span>PartialEq&lt;str&gt; <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>str) -&gt; bool {
+        <span class="self">self</span>.partial_cmp(other) == <span class="prelude-val">Some</span>(Ordering::Equal)
+    }
+}
+
+<span class="kw">impl </span>PartialEq&lt;<span class="kw-2">&amp;</span>str&gt; <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: &amp;&amp;str) -&gt; bool {
+        <span class="self">self</span>.partial_cmp(other) == <span class="prelude-val">Some</span>(Ordering::Equal)
+    }
+}
+
+<span class="kw">impl </span>PartialEq&lt;GStr&gt; <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GStr) -&gt; bool {
+        <span class="self">self</span>.partial_cmp(other) == <span class="prelude-val">Some</span>(Ordering::Equal)
+    }
+}
+
+<span class="kw">impl </span>PartialEq&lt;<span class="kw-2">&amp;</span>GStr&gt; <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: &amp;&amp;GStr) -&gt; bool {
+        <span class="self">self</span>.partial_cmp(other) == <span class="prelude-val">Some</span>(Ordering::Equal)
+    }
+}
+
+<span class="kw">impl </span>PartialEq&lt;GStringPtr&gt; <span class="kw">for </span><span class="kw-2">&amp;</span>str {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GStringPtr) -&gt; bool {
+        <span class="self">self</span>.partial_cmp(other) == <span class="prelude-val">Some</span>(Ordering::Equal)
+    }
+}
+
+<span class="kw">impl </span>PartialEq&lt;GStringPtr&gt; <span class="kw">for </span><span class="kw-2">&amp;</span>GStr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GStringPtr) -&gt; bool {
+        <span class="self">self</span>.partial_cmp(other) == <span class="prelude-val">Some</span>(Ordering::Equal)
+    }
+}
+
+<span class="kw">impl </span>PartialEq&lt;String&gt; <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>String) -&gt; bool {
+        <span class="self">self</span>.partial_cmp(other) == <span class="prelude-val">Some</span>(Ordering::Equal)
+    }
+}
+
+<span class="kw">impl </span>PartialEq&lt;GString&gt; <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GString) -&gt; bool {
+        <span class="self">self</span>.partial_cmp(other) == <span class="prelude-val">Some</span>(Ordering::Equal)
+    }
+}
+
+<span class="kw">impl </span>PartialEq&lt;GStringPtr&gt; <span class="kw">for </span>str {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GStringPtr) -&gt; bool {
+        <span class="self">self</span>.partial_cmp(other) == <span class="prelude-val">Some</span>(Ordering::Equal)
+    }
+}
+
+<span class="kw">impl </span>PartialEq&lt;GStringPtr&gt; <span class="kw">for </span>GStr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>eq(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GStringPtr) -&gt; bool {
+        <span class="self">self</span>.partial_cmp(other) == <span class="prelude-val">Some</span>(Ordering::Equal)
+    }
+}
+
+<span class="kw">impl </span>PartialOrd&lt;GStringPtr&gt; <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GStringPtr) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
+        <span class="prelude-val">Some</span>(<span class="kw">unsafe </span>{ GStringPtr::strcmp(<span class="self">self</span>.as_ptr(), other.as_ptr()) })
+    }
+}
+
+<span class="kw">impl </span>Ord <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span><span class="self">Self</span>) -&gt; std::cmp::Ordering {
+        <span class="kw">unsafe </span>{ GStringPtr::strcmp(<span class="self">self</span>.as_ptr(), other.as_ptr()) }
+    }
+}
+
+<span class="kw">impl </span>PartialOrd&lt;GStringPtr&gt; <span class="kw">for </span>String {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GStringPtr) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
+        <span class="prelude-val">Some</span>(<span class="self">self</span>.as_str().cmp(other.to_str()))
+    }
+}
+
+<span class="kw">impl </span>PartialOrd&lt;GStringPtr&gt; <span class="kw">for </span>GString {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GStringPtr) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
+        <span class="prelude-val">Some</span>(<span class="kw">unsafe </span>{ GStringPtr::strcmp(<span class="self">self</span>.as_ptr(), other.as_ptr()) })
+    }
+}
+
+<span class="kw">impl </span>PartialOrd&lt;String&gt; <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>String) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
+        <span class="prelude-val">Some</span>(<span class="self">self</span>.to_str().cmp(other))
+    }
+}
+
+<span class="kw">impl </span>PartialOrd&lt;GString&gt; <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GString) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
+        <span class="prelude-val">Some</span>(<span class="kw">unsafe </span>{ GStringPtr::strcmp(<span class="self">self</span>.as_ptr(), other.as_ptr()) })
+    }
+}
+
+<span class="kw">impl </span>PartialOrd&lt;GStringPtr&gt; <span class="kw">for </span>str {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GStringPtr) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
+        <span class="prelude-val">Some</span>(<span class="self">self</span>.cmp(other.to_str()))
+    }
+}
+
+<span class="kw">impl </span>PartialOrd&lt;GStringPtr&gt; <span class="kw">for </span>GStr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GStringPtr) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
+        <span class="prelude-val">Some</span>(<span class="kw">unsafe </span>{ GStringPtr::strcmp(<span class="self">self</span>.as_ptr(), other.as_ptr()) })
+    }
+}
+
+<span class="kw">impl </span>PartialOrd&lt;str&gt; <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>str) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
+        <span class="prelude-val">Some</span>(<span class="self">self</span>.to_str().cmp(other))
+    }
+}
+
+<span class="kw">impl </span>PartialOrd&lt;<span class="kw-2">&amp;</span>str&gt; <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: &amp;&amp;str) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
+        <span class="prelude-val">Some</span>(<span class="self">self</span>.to_str().cmp(other))
+    }
+}
+
+<span class="kw">impl </span>PartialOrd&lt;GStr&gt; <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GStr) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
+        <span class="prelude-val">Some</span>(<span class="kw">unsafe </span>{ GStringPtr::strcmp(<span class="self">self</span>.as_ptr(), other.as_ptr()) })
+    }
+}
+
+<span class="kw">impl </span>PartialOrd&lt;<span class="kw-2">&amp;</span>GStr&gt; <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: &amp;&amp;GStr) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
+        <span class="prelude-val">Some</span>(<span class="kw">unsafe </span>{ GStringPtr::strcmp(<span class="self">self</span>.as_ptr(), other.as_ptr()) })
+    }
+}
+
+<span class="kw">impl </span>PartialOrd&lt;GStringPtr&gt; <span class="kw">for </span><span class="kw-2">&amp;</span>str {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GStringPtr) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
+        <span class="prelude-val">Some</span>(<span class="self">self</span>.cmp(<span class="kw-2">&amp;</span>other.to_str()))
+    }
+}
+
+<span class="kw">impl </span>PartialOrd&lt;GStringPtr&gt; <span class="kw">for </span><span class="kw-2">&amp;</span>GStr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>partial_cmp(<span class="kw-2">&amp;</span><span class="self">self</span>, other: <span class="kw-2">&amp;</span>GStringPtr) -&gt; <span class="prelude-ty">Option</span>&lt;std::cmp::Ordering&gt; {
+        <span class="prelude-val">Some</span>(<span class="kw">unsafe </span>{ GStringPtr::strcmp(<span class="self">self</span>.as_ptr(), other.as_ptr()) })
+    }
+}
+
+<span class="kw">impl </span>AsRef&lt;GStringPtr&gt; <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>as_ref(<span class="kw-2">&amp;</span><span class="self">self</span>) -&gt; <span class="kw-2">&amp;</span>GStringPtr {
+        <span class="self">self
+    </span>}
+}
+
+<span class="kw">impl </span>std::hash::Hash <span class="kw">for </span>GStringPtr {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>hash&lt;H: std::hash::Hasher&gt;(<span class="kw-2">&amp;</span><span class="self">self</span>, state: <span class="kw-2">&amp;mut </span>H) {
+        <span class="self">self</span>.to_str().hash(state);
     }
 }
 
@@ -3699,6 +4384,13 @@
     }
 }
 
+<span class="kw">impl </span>From&lt;<span class="kw-2">&amp;</span>String&gt; <span class="kw">for </span>GString {
+    <span class="attr">#[inline]
+    </span><span class="kw">fn </span>from(s: <span class="kw-2">&amp;</span>String) -&gt; <span class="self">Self </span>{
+        GString::from(s.as_str())
+    }
+}
+
 <span class="kw">impl </span>TryFrom&lt;CString&gt; <span class="kw">for </span>GString {
     <span class="kw">type </span>Error = GStringUtf8Error&lt;CString&gt;;
     <span class="attr">#[inline]
@@ -4402,4 +5094,4 @@
     }
 }
 </code></pre></div>
-</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.68.0-nightly (4c83bd03a 2023-01-19)" data-search-js="search-98d53477a794af0b.js" data-settings-js="settings-c3c521c753752a1a.js" data-settings-css="settings-ab1d4ae2ec52020e.css" ></div></body></html>
+</section></main><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib" data-themes="" data-resource-suffix="" data-rustdoc-version="1.69.0-nightly (2773383a3 2023-02-10)" data-search-js="search-28136cea55c34037.js" data-settings-js="settings-f0c5c39777a9a2f6.js" data-settings-css="settings-0bcba95ff279c1db.css" ></div></body></html>
