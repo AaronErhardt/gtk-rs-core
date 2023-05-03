@@ -964,6 +964,7 @@
 <a href="#891" id="891">891</a>
 <a href="#892" id="892">892</a>
 <a href="#893" id="893">893</a>
+<a href="#894" id="894">894</a>
 </pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
 </span><span class="kw">use </span>std::{iter::FusedIterator, marker::PhantomData, mem, ptr};
@@ -1351,7 +1352,8 @@
     </span><span class="doccomment">/// Consumes the list and returns the underlying pointer.
     </span><span class="attr">#[inline]
     </span><span class="kw">pub fn </span>into_raw(<span class="kw-2">mut </span><span class="self">self</span>) -&gt; <span class="kw-2">*mut </span>ffi::GList {
-        mem::replace(<span class="kw-2">&amp;mut </span><span class="self">self</span>.ptr, <span class="prelude-val">None</span>)
+        <span class="self">self</span>.ptr
+            .take()
             .map(|p| p.as_ptr())
             .unwrap_or(ptr::null_mut())
     }
