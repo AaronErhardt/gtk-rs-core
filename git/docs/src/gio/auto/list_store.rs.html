@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/list_store.rs`."><title>list_store.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-ba5701c5741a7b69.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a368898de 2023-05-02)" data-search-js="search-618e954b235f6acc.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../../source-files.js"></script><script defer src="../../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `gio/src/auto/list_store.rs`."><title>list_store.rs - source</title><script> if (window.location.protocol !== "file:") document.write(`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2">`)</script><link rel="stylesheet" href="../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../static.files/rustdoc-e935ef01ae1c1829.css"><meta name="rustdoc-vars" data-root-path="../../../" data-static-root-path="../../../static.files/" data-current-crate="gio" data-themes="" data-resource-suffix="" data-rustdoc-version="1.78.0-nightly (3cbb93223 2024-03-13)" data-channel="nightly" data-search-js="search-dd67cee4cfa65049.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../../static.files/storage-4c98445ec4002617.js"></script><script defer src="../../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../../src-files.js"></script><script defer src="../../../static.files/main-12cf3b4f4f9dc36d.js"></script><noscript><link rel="stylesheet" href="../../../static.files/noscript-04d5337699b92874.css"></noscript><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -71,7 +71,9 @@
 </script>
 
 
-<nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../../gio/index.html"><img class="rust-logo" src="../../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<nav class="sidebar"><div class="src-sidebar-title">
+            <h2>Files</h2></div></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><div id="sidebar-button" tabindex="-1"><a href="../../../gio/all.html" title="show sidebar"></a></div><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -247,30 +249,16 @@
 <a href="#174" id="174">174</a>
 <a href="#175" id="175">175</a>
 <a href="#176" id="176">176</a>
-<a href="#177" id="177">177</a>
-<a href="#178" id="178">178</a>
-<a href="#179" id="179">179</a>
-<a href="#180" id="180">180</a>
-<a href="#181" id="181">181</a>
-<a href="#182" id="182">182</a>
-<a href="#183" id="183">183</a>
-<a href="#184" id="184">184</a>
-<a href="#185" id="185">185</a>
-<a href="#186" id="186">186</a>
 </pre></div><pre class="rust"><code><span class="comment">// This file was generated by gir (https://github.com/gtk-rs/gir)
 // from gir-files (https://github.com/gtk-rs/gir-files)
 // DO NOT EDIT
 
-</span><span class="kw">use </span><span class="kw">crate</span>::ListModel;
-<span class="kw">use </span>glib::{prelude::<span class="kw-2">*</span>, translate::<span class="kw-2">*</span>};
-<span class="kw">use </span>std::fmt;
-<span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
-#[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
-</span><span class="kw">use </span>std::mem;
+</span><span class="kw">use </span><a href="list_model.rs.html#12-102"><span class="kw">crate</span>::ListModel</a>;
+<span class="kw">use </span>glib::{<a href="../../../glib/prelude/index.html">prelude</a>::<span class="kw-2">*</span>, <a href="../../../glib/translate/index.html">translate</a>::<span class="kw-2">*</span>};
 
-<span class="macro">glib::wrapper! </span>{
-    <span class="doccomment">/// [`ListStore`][crate::ListStore] is a simple implementation of [`ListModel`][crate::ListModel] that stores all
-    /// items in memory.
+<a class="macro" href="../../../glib/macro.wrapper.html">glib::wrapper!</a> {
+    <span class="doccomment">/// `GListStore` is a simple implementation of [`ListModel`][crate::ListModel] that stores
+    /// all items in memory.
     ///
     /// It provides insertions, deletions, and lookups in logarithmic time
     /// with a fast path for the common case of iterating the list linearly.
@@ -280,7 +268,7 @@
     ///
     /// #### `item-type`
     ///  The type of items contained in this list store. Items must be
-    /// subclasses of [`glib::Object`][crate::glib::Object].
+    /// subclasses of #GObject.
     ///
     /// Readable | Writeable | Construct Only
     ///
@@ -293,115 +281,115 @@
     /// # Implements
     ///
     /// [`trait@glib::ObjectExt`], [`ListModelExt`][trait@crate::prelude::ListModelExt], [`ListModelExtManual`][trait@crate::prelude::ListModelExtManual]
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;GListStore&quot;</span>)]
-    </span><span class="kw">pub struct </span>ListStore(Object&lt;ffi::GListStore, ffi::GListStoreClass&gt;) @implements ListModel;
+    </span><span class="attr">#[doc(alias = <span class="string">"GListStore"</span>)]
+    </span><span class="kw">pub struct </span><a href="../../../gio/struct.ListStore.html">ListStore</a>(Object&lt;<a href="../../../gio_sys/struct.GListStore.html">ffi::GListStore</a>, <a href="../../../gio_sys/struct.GListStoreClass.html">ffi::GListStoreClass</a>&gt;) @implements <a href="list_model.rs.html#12-102">ListModel</a>;
 
     <span class="kw">match fn </span>{
         type_ =&gt; || ffi::g_list_store_get_type(),
     }
 }
 
-<span class="kw">impl </span>ListStore {
+<span class="kw">impl </span><a href="#8-39">ListStore</a> {
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Creates a new builder-pattern struct instance to construct [`ListStore`] objects.
     ///
     /// This method returns an instance of [`ListStoreBuilder`](crate::builders::ListStoreBuilder) which can be used to create [`ListStore`] objects.
-    </span><span class="kw">pub fn </span>builder() -&gt; ListStoreBuilder {
-        ListStoreBuilder::new()
+    </span><span class="kw">pub fn </span>builder() -&gt; <a href="#151-153">ListStoreBuilder</a> {
+        <a href="#156-160">ListStoreBuilder::new</a>()
     }
 
-    <span class="doccomment">/// Appends `item` to `self`. `item` must be of type [`item-type`][struct@crate::ListStore#item-type].
+    <span class="doccomment">/// Appends @item to @self. @item must be of type #GListStore:item-type.
     ///
-    /// This function takes a ref on `item`.
+    /// This function takes a ref on @item.
     ///
-    /// Use [`splice()`][Self::splice()] to append multiple items at the same time
+    /// Use g_list_store_splice() to append multiple items at the same time
     /// efficiently.
     /// ## `item`
     /// the new item
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_list_store_append&quot;</span>)]
-    </span><span class="kw">pub fn </span>append(<span class="kw-2">&amp;</span><span class="self">self</span>, item: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;glib::Object&gt;) {
+    </span><span class="attr">#[doc(alias = <span class="string">"g_list_store_append"</span>)]
+    </span><span class="kw">pub fn </span>append(<span class="kw-2">&amp;</span><span class="self">self</span>, item: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="../../../glib/object/struct.Object.html">glib::Object</a>&gt;) {
         <span class="kw">unsafe </span>{
-            ffi::g_list_store_append(<span class="self">self</span>.to_glib_none().<span class="number">0</span>, item.as_ref().to_glib_none().<span class="number">0</span>);
+            <a href="../../../gio_sys/fn.g_list_store_append.html">ffi::g_list_store_append</a>(<a class="self" href="#59">self</a>.<a href="../../../glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>, <a href="#59">item</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="../../../glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>);
         }
     }
 
-    <span class="doccomment">/// Looks up the given `item` in the list store by looping over the items until
-    /// the first occurrence of `item`. If `item` was not found, then `position` will
+    <span class="doccomment">/// Looks up the given @item in the list store by looping over the items until
+    /// the first occurrence of @item. If @item was not found, then @position will
     /// not be set, and this method will return [`false`].
     ///
     /// If you need to compare the two items with a custom comparison function, use
-    /// [`find_with_equal_func()`][Self::find_with_equal_func()] with a custom `GEqualFunc` instead.
+    /// g_list_store_find_with_equal_func() with a custom #GEqualFunc instead.
     /// ## `item`
     /// an item
     ///
     /// # Returns
     ///
-    /// Whether `self` contains `item`. If it was found, `position` will be
-    /// set to the position where `item` occurred for the first time.
+    /// Whether @self contains @item. If it was found, @position will be
+    /// set to the position where @item occurred for the first time.
     ///
     /// ## `position`
-    /// the first position of `item`, if it was found.
-    </span><span class="attr">#[cfg(any(feature = <span class="string">&quot;v2_64&quot;</span>))]
-    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">&quot;v2_64&quot;</span>)))]
-    #[doc(alias = <span class="string">&quot;g_list_store_find&quot;</span>)]
-    </span><span class="kw">pub fn </span>find(<span class="kw-2">&amp;</span><span class="self">self</span>, item: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;glib::Object&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;u32&gt; {
+    /// the first position of @item, if it was found.
+    </span><span class="attr">#[cfg(feature = <span class="string">"v2_64"</span>)]
+    #[cfg_attr(docsrs, doc(cfg(feature = <span class="string">"v2_64"</span>)))]
+    #[doc(alias = <span class="string">"g_list_store_find"</span>)]
+    </span><span class="kw">pub fn </span>find(<span class="kw-2">&amp;</span><span class="self">self</span>, item: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="../../../glib/object/struct.Object.html">glib::Object</a>&gt;) -&gt; <span class="prelude-ty">Option</span>&lt;<a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>&gt; {
         <span class="kw">unsafe </span>{
-            <span class="kw">let </span><span class="kw-2">mut </span>position = mem::MaybeUninit::uninit();
-            <span class="kw">let </span>ret = from_glib(ffi::g_list_store_find(
-                <span class="self">self</span>.to_glib_none().<span class="number">0</span>,
-                item.as_ref().to_glib_none().<span class="number">0</span>,
-                position.as_mut_ptr(),
+            <span class="kw">let </span><span class="kw-2">mut </span>position = <a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.uninit">std::mem::MaybeUninit::uninit</a>();
+            <span class="kw">let </span>ret = <a href="../../../glib/translate/fn.from_glib.html">from_glib</a>(<a href="../../../gio_sys/fn.g_list_store_find.html">ffi::g_list_store_find</a>(
+                <a class="self" href="#84">self</a>.<a href="../../../glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#84">item</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="../../../glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#86">position</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.as_mut_ptr">as_mut_ptr</a>(),
             ));
             <span class="kw">if </span>ret {
-                <span class="prelude-val">Some</span>(position.assume_init())
+                <span class="prelude-val">Some</span>(<a href="#86">position</a>.<a href="https://doc.rust-lang.org/nightly/core/mem/maybe_uninit/union.MaybeUninit.html#method.assume_init">assume_init</a>())
             } <span class="kw">else </span>{
                 <span class="prelude-val">None
             </span>}
         }
     }
 
-    <span class="doccomment">/// Inserts `item` into `self` at `position`. `item` must be of type
-    /// [`item-type`][struct@crate::ListStore#item-type] or derived from it. `position` must be smaller
+    <span class="doccomment">/// Inserts @item into @self at @position. @item must be of type
+    /// #GListStore:item-type or derived from it. @position must be smaller
     /// than the length of the list, or equal to it to append.
     ///
-    /// This function takes a ref on `item`.
+    /// This function takes a ref on @item.
     ///
-    /// Use [`splice()`][Self::splice()] to insert multiple items at the same time
+    /// Use g_list_store_splice() to insert multiple items at the same time
     /// efficiently.
     /// ## `position`
     /// the position at which to insert the new item
     /// ## `item`
     /// the new item
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_list_store_insert&quot;</span>)]
-    </span><span class="kw">pub fn </span>insert(<span class="kw-2">&amp;</span><span class="self">self</span>, position: u32, item: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;glib::Object&gt;) {
+    </span><span class="attr">#[doc(alias = <span class="string">"g_list_store_insert"</span>)]
+    </span><span class="kw">pub fn </span>insert(<span class="kw-2">&amp;</span><span class="self">self</span>, position: <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>, item: <span class="kw-2">&amp;</span><span class="kw">impl </span>IsA&lt;<a href="../../../glib/object/struct.Object.html">glib::Object</a>&gt;) {
         <span class="kw">unsafe </span>{
-            ffi::g_list_store_insert(
-                <span class="self">self</span>.to_glib_none().<span class="number">0</span>,
-                position,
-                item.as_ref().to_glib_none().<span class="number">0</span>,
+            <a href="../../../gio_sys/fn.g_list_store_insert.html">ffi::g_list_store_insert</a>(
+                <a class="self" href="#113">self</a>.<a href="../../../glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
+                <a href="#113">position</a>,
+                <a href="#113">item</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.AsRef.html#tymethod.as_ref">as_ref</a>().<a href="../../../glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>,
             );
         }
     }
 
-    <span class="doccomment">/// Removes the item from `self` that is at `position`. `position` must be
+    <span class="doccomment">/// Removes the item from @self that is at @position. @position must be
     /// smaller than the current length of the list.
     ///
-    /// Use [`splice()`][Self::splice()] to remove multiple items at the same time
+    /// Use g_list_store_splice() to remove multiple items at the same time
     /// efficiently.
     /// ## `position`
     /// the position of the item that is to be removed
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_list_store_remove&quot;</span>)]
-    </span><span class="kw">pub fn </span>remove(<span class="kw-2">&amp;</span><span class="self">self</span>, position: u32) {
+    </span><span class="attr">#[doc(alias = <span class="string">"g_list_store_remove"</span>)]
+    </span><span class="kw">pub fn </span>remove(<span class="kw-2">&amp;</span><span class="self">self</span>, position: <a href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>) {
         <span class="kw">unsafe </span>{
-            ffi::g_list_store_remove(<span class="self">self</span>.to_glib_none().<span class="number">0</span>, position);
+            <a href="../../../gio_sys/fn.g_list_store_remove.html">ffi::g_list_store_remove</a>(<a class="self" href="#131">self</a>.<a href="../../../glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>, <a href="#131">position</a>);
         }
     }
 
-    <span class="doccomment">/// Removes all items from `self`.
-    </span><span class="attr">#[doc(alias = <span class="string">&quot;g_list_store_remove_all&quot;</span>)]
+    <span class="doccomment">/// Removes all items from @self.
+    </span><span class="attr">#[doc(alias = <span class="string">"g_list_store_remove_all"</span>)]
     </span><span class="kw">pub fn </span>remove_all(<span class="kw-2">&amp;</span><span class="self">self</span>) {
         <span class="kw">unsafe </span>{
-            ffi::g_list_store_remove_all(<span class="self">self</span>.to_glib_none().<span class="number">0</span>);
+            <a href="../../../gio_sys/fn.g_list_store_remove_all.html">ffi::g_list_store_remove_all</a>(<a class="self" href="#139">self</a>.<a href="../../../glib/translate/trait.ToGlibPtr.html#tymethod.to_glib_none">to_glib_none</a>().<span class="number">0</span>);
         }
     }
 }
@@ -410,37 +398,31 @@
 </span><span class="doccomment">/// A [builder-pattern] type to construct [`ListStore`] objects.
 ///
 /// [builder-pattern]: https://doc.rust-lang.org/1.0.0/style/ownership/builders.html
-</span><span class="attr">#[must_use = <span class="string">&quot;The builder must be built to be used&quot;</span>]
-</span><span class="kw">pub struct </span>ListStoreBuilder {
-    builder: glib::object::ObjectBuilder&lt;<span class="lifetime">&#39;static</span>, ListStore&gt;,
+</span><span class="attr">#[must_use = <span class="string">"The builder must be built to be used"</span>]
+</span><span class="kw">pub struct </span><a href="../../../gio/builders/struct.ListStoreBuilder.html">ListStoreBuilder</a> {
+    builder: glib::object::ObjectBuilder&lt;<span class="lifetime">'static</span>, <a href="#8-39">ListStore</a>&gt;,
 }
 
-<span class="kw">impl </span>ListStoreBuilder {
+<span class="kw">impl </span><a href="#151-153">ListStoreBuilder</a> {
     <span class="kw">fn </span>new() -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
-            builder: glib::object::Object::builder(),
+            builder: <a href="../../../glib/object/struct.Object.html#method.builder">glib::object::Object::builder</a>(),
         }
     }
 
     <span class="doccomment">/// The type of items contained in this list store. Items must be
-    /// subclasses of [`glib::Object`][crate::glib::Object].
-    </span><span class="kw">pub fn </span>item_type(<span class="self">self</span>, item_type: glib::types::Type) -&gt; <span class="self">Self </span>{
+    /// subclasses of #GObject.
+    </span><span class="kw">pub fn </span>item_type(<span class="self">self</span>, item_type: <a href="../../../glib/types/struct.Type.html">glib::types::Type</a>) -&gt; <span class="self">Self </span>{
         <span class="self">Self </span>{
-            builder: <span class="self">self</span>.builder.property(<span class="string">&quot;item-type&quot;</span>, item_type),
+            builder: <a class="self" href="#164">self</a>.builder.<a href="../../../glib/object/struct.ObjectBuilder.html#method.property">property</a>(<span class="string">"item-type"</span>, <a href="#164">item_type</a>),
         }
     }
 
     <span class="comment">// rustdoc-stripper-ignore-next
     </span><span class="doccomment">/// Build the [`ListStore`].
-    </span><span class="attr">#[must_use = <span class="string">&quot;Building the object from the builder is usually expensive and is not expected to have side effects&quot;</span>]
-    </span><span class="kw">pub fn </span>build(<span class="self">self</span>) -&gt; ListStore {
-        <span class="self">self</span>.builder.build()
-    }
-}
-
-<span class="kw">impl </span>fmt::Display <span class="kw">for </span>ListStore {
-    <span class="kw">fn </span>fmt(<span class="kw-2">&amp;</span><span class="self">self</span>, f: <span class="kw-2">&amp;mut </span>fmt::Formatter) -&gt; fmt::Result {
-        f.write_str(<span class="string">&quot;ListStore&quot;</span>)
+    </span><span class="attr">#[must_use = <span class="string">"Building the object from the builder is usually expensive and is not expected to have side effects"</span>]
+    </span><span class="kw">pub fn </span>build(<span class="self">self</span>) -&gt; <a href="#8-39">ListStore</a> {
+        <a class="self" href="#173">self</a>.builder.<a href="../../../glib/object/struct.ObjectBuilder.html#method.build">build</a>()
     }
 }
 </code></pre></div></section></main></body></html>

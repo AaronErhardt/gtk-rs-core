@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib-macros/src/value_delegate_derive.rs`."><title>value_delegate_derive.rs - source</title><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Bold-a2c9cd1067f8b328.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2"><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-ba5701c5741a7b69.css" id="mainThemeStyle"><div id="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib_macros" data-themes="" data-resource-suffix="" data-rustdoc-version="1.71.0-nightly (a368898de 2023-05-02)" data-search-js="search-618e954b235f6acc.js" data-settings-js="settings-de11bff964e9d4e5.js" data-settings-css="settings-6f6ffb5395b17c6e.css" data-theme-light-css="light-0f8c037637f9eb3e.css" data-theme-dark-css="dark-1097f8e92a01e3cf.css" data-theme-ayu-css="ayu-614652228113ac93.css" ></div><script src="../../static.files/storage-62ce34ea385b278a.js"></script><script defer src="../../static.files/source-script-11255107d0a65077.js"></script><script defer src="../../source-files.js"></script><script defer src="../../static.files/main-f0540c1d82cde29b.js"></script><noscript><link rel="stylesheet" media="(prefers-color-scheme:light)" href="../../static.files/light-0f8c037637f9eb3e.css"><link rel="stylesheet" media="(prefers-color-scheme:dark)" href="../../static.files/dark-1097f8e92a01e3cf.css"><link rel="stylesheet" href="../../static.files/noscript-13285aec31fa243e.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `glib-macros/src/value_delegate_derive.rs`."><title>value_delegate_derive.rs - source</title><script> if (window.location.protocol !== "file:") document.write(`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceSerif4-Regular-46f98efaafac5295.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Regular-018c141bf0843ffd.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/FiraSans-Medium-8f9a781e4970d388.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2"><link rel="preload" as="font" type="font/woff2" crossorigin href="../../static.files/SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2">`)</script><link rel="stylesheet" href="../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../static.files/rustdoc-e935ef01ae1c1829.css"><meta name="rustdoc-vars" data-root-path="../../" data-static-root-path="../../static.files/" data-current-crate="glib_macros" data-themes="" data-resource-suffix="" data-rustdoc-version="1.78.0-nightly (3cbb93223 2024-03-13)" data-channel="nightly" data-search-js="search-dd67cee4cfa65049.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../static.files/storage-4c98445ec4002617.js"></script><script defer src="../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../src-files.js"></script><script defer src="../../static.files/main-12cf3b4f4f9dc36d.js"></script><noscript><link rel="stylesheet" href="../../static.files/noscript-04d5337699b92874.css"></noscript><link rel="alternate icon" type="image/png" href="../../static.files/favicon-16x16-8b506e7a72182f1c.png"><link rel="alternate icon" type="image/png" href="../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]-->
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", checkDocsLatestStable);
 
@@ -71,7 +71,9 @@
 </script>
 
 
-<nav class="sidebar"></nav><main><nav class="sub"><a class="sub-logo-container" href="../../glib_macros/index.html"><img class="rust-logo" src="../../static.files/rust-logo-151179464ae7ed46.svg" alt="logo"></a><form class="search-form"><span></span><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" title="help" tabindex="-1"><a href="../../help.html">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<nav class="sidebar"><div class="src-sidebar-title">
+            <h2>Files</h2></div></nav><div class="sidebar-resizer"></div>
+    <main><nav class="sub"><form class="search-form"><span></span><div id="sidebar-button" tabindex="-1"><a href="../../glib_macros/all.html" title="show sidebar"></a></div><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../settings.html" title="settings"><img width="22" height="22" alt="Change settings" src="../../static.files/wheel-7b819b6101059cd0.svg"></a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -273,10 +275,10 @@
 <a href="#200" id="200">200</a>
 </pre></div><pre class="rust"><code><span class="comment">// Take a look at the license at the top of the repository in the LICENSE file.
 
-</span><span class="kw">use </span>quote::quote;
-<span class="kw">use </span>syn::{parse::Parse, Token};
+</span><span class="kw">use </span><a href="https://docs.rs/quote/1.0.35/quote/macro.quote.html">quote::quote</a>;
+<span class="kw">use </span>syn::{<a href="https://docs.rs/syn/2.0.52/syn/parse/trait.Parse.html">parse::Parse</a>, <a href="https://docs.rs/syn/2.0.52/syn/macro.Token.html">Token</a>};
 
-<span class="kw">use </span><span class="kw">crate</span>::utils::crate_ident_new;
+<span class="kw">use </span><a href="utils.rs.html#188-215"><span class="kw">crate</span>::utils::crate_ident_new</a>;
 
 <span class="attr">#[derive(Default, Debug, Clone)]
 </span><span class="kw">enum </span>DeriveMode {
@@ -286,29 +288,29 @@
 }
 
 <span class="kw">pub struct </span>ValueDelegateInput {
-    delegated_ty: syn::Path,
-    ident: syn::Ident,
-    mode: DeriveMode,
-    nullable: bool,
+    delegated_ty: <a href="https://docs.rs/syn/2.0.52/syn/path/struct.Path.html">syn::Path</a>,
+    ident: <a href="https://docs.rs/proc-macro2/1.0.78/proc_macro2/struct.Ident.html">syn::Ident</a>,
+    mode: <a href="#9-13">DeriveMode</a>,
+    nullable: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
 }
 
 <span class="kw">enum </span>Arg {
-    FromPath(syn::Path),
+    FromPath(<a href="https://docs.rs/syn/2.0.52/syn/path/struct.Path.html">syn::Path</a>),
     Nullable,
 }
 
-<span class="kw">impl </span>Parse <span class="kw">for </span>Arg {
-    <span class="kw">fn </span>parse(input: syn::parse::ParseStream) -&gt; syn::Result&lt;<span class="self">Self</span>&gt; {
-        <span class="kw">let </span>argname: syn::Ident = input.parse()<span class="question-mark">?</span>;
-        <span class="kw">if </span>argname == <span class="string">&quot;nullable&quot; </span>{
-            <span class="prelude-val">Ok</span>(Arg::Nullable)
-        } <span class="kw">else if </span>argname == <span class="string">&quot;from&quot; </span>{
-            <span class="kw">let </span>_eq: <span class="macro">Token!</span>[=] = input.parse()<span class="question-mark">?</span>;
-            <span class="prelude-val">Ok</span>(Arg::FromPath(input.parse()<span class="question-mark">?</span>))
+<span class="kw">impl </span><a href="https://docs.rs/syn/2.0.52/syn/parse/trait.Parse.html">Parse</a> <span class="kw">for </span><a href="#22-25">Arg</a> {
+    <span class="kw">fn </span>parse(input: <a href="https://docs.rs/syn/2.0.52/syn/parse/type.ParseStream.html">syn::parse::ParseStream</a>) -&gt; syn::Result&lt;<span class="self">Self</span>&gt; {
+        <span class="kw">let </span>argname: <a href="https://docs.rs/proc-macro2/1.0.78/proc_macro2/struct.Ident.html">syn::Ident</a> = <a href="#28">input</a>.<a href="https://docs.rs/syn/2.0.52/syn/parse/struct.ParseBuffer.html#method.parse">parse</a>()<span class="question-mark">?</span>;
+        <span class="kw">if </span>argname == <span class="string">"nullable" </span>{
+            <span class="prelude-val">Ok</span>(<a href="#24">Arg::Nullable</a>)
+        } <span class="kw">else if </span>argname == <span class="string">"from" </span>{
+            <span class="kw">let </span>_eq: <a class="macro" href="https://docs.rs/syn/2.0.52/syn/macro.Token.html">Token!</a>[=] = <a href="#28">input</a>.<a href="https://docs.rs/syn/2.0.52/syn/parse/struct.ParseBuffer.html#method.parse">parse</a>()<span class="question-mark">?</span>;
+            <span class="prelude-val">Ok</span>(<a href="#23">Arg::FromPath</a>(<a href="#28">input</a>.<a href="https://docs.rs/syn/2.0.52/syn/parse/struct.ParseBuffer.html#method.parse">parse</a>()<span class="question-mark">?</span>))
         } <span class="kw">else </span>{
-            <span class="prelude-val">Err</span>(syn::Error::new(
-                input.span(),
-                <span class="string">&quot;expected `nullable` or `from`&quot;</span>,
+            <span class="prelude-val">Err</span>(<a href="https://docs.rs/syn/2.0.52/syn/error/struct.Error.html#method.new">syn::Error::new</a>(
+                <a href="#28">input</a>.<a href="https://docs.rs/syn/2.0.52/syn/parse/struct.ParseBuffer.html#method.span">span</a>(),
+                <span class="string">"expected `nullable` or `from`"</span>,
             ))
         }
     }
@@ -316,47 +318,47 @@
 
 <span class="attr">#[derive(Default)]
 </span><span class="kw">struct </span>Args {
-    nullable: bool,
-    from_path: <span class="prelude-ty">Option</span>&lt;syn::Path&gt;,
+    nullable: <a href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>,
+    from_path: <span class="prelude-ty">Option</span>&lt;<a href="https://docs.rs/syn/2.0.52/syn/path/struct.Path.html">syn::Path</a>&gt;,
 }
 
-<span class="kw">impl </span>Parse <span class="kw">for </span>Args {
-    <span class="kw">fn </span>parse(input: syn::parse::ParseStream) -&gt; syn::Result&lt;<span class="self">Self</span>&gt; {
-        <span class="kw">let </span>args = syn::punctuated::Punctuated::&lt;Arg, <span class="macro">Token!</span>[,]&gt;::parse_terminated(input)<span class="question-mark">?</span>;
-        <span class="kw">let </span><span class="kw-2">mut </span>this = Args::default();
+<span class="kw">impl </span><a href="https://docs.rs/syn/2.0.52/syn/parse/trait.Parse.html">Parse</a> <span class="kw">for </span><a href="#45-48">Args</a> {
+    <span class="kw">fn </span>parse(input: <a href="https://docs.rs/syn/2.0.52/syn/parse/type.ParseStream.html">syn::parse::ParseStream</a>) -&gt; syn::Result&lt;<span class="self">Self</span>&gt; {
+        <span class="kw">let </span>args = syn::punctuated::Punctuated::&lt;<a href="#22-25">Arg</a>, <a class="macro" href="https://docs.rs/syn/2.0.52/syn/macro.Token.html">Token!</a>[,]&gt;::parse_terminated(<a href="#51">input</a>)<span class="question-mark">?</span>;
+        <span class="kw">let </span><span class="kw-2">mut </span>this = <a href="https://doc.rust-lang.org/nightly/core/default/trait.Default.html#tymethod.default">Args::default</a>();
         <span class="kw">for </span>a <span class="kw">in </span>args {
             <span class="kw">match </span>a {
                 Arg::FromPath(p) =&gt; this.from_path = <span class="prelude-val">Some</span>(p),
                 Arg::Nullable =&gt; this.nullable = <span class="bool-val">true</span>,
             }
         }
-        <span class="prelude-val">Ok</span>(this)
+        <span class="prelude-val">Ok</span>(<a href="#53">this</a>)
     }
 }
 
-<span class="kw">impl </span>Parse <span class="kw">for </span>ValueDelegateInput {
-    <span class="kw">fn </span>parse(input: syn::parse::ParseStream) -&gt; syn::Result&lt;<span class="self">Self</span>&gt; {
-        <span class="kw">let </span>derive_input: syn::DeriveInput = input.parse()<span class="question-mark">?</span>;
-        <span class="kw">let </span>args: <span class="prelude-ty">Option</span>&lt;Args&gt; = <span class="kw">if let </span><span class="prelude-val">Some</span>(attr) = derive_input
+<span class="kw">impl </span><a href="https://docs.rs/syn/2.0.52/syn/parse/trait.Parse.html">Parse</a> <span class="kw">for </span><a href="#15-20">ValueDelegateInput</a> {
+    <span class="kw">fn </span>parse(input: <a href="https://docs.rs/syn/2.0.52/syn/parse/type.ParseStream.html">syn::parse::ParseStream</a>) -&gt; syn::Result&lt;<span class="self">Self</span>&gt; {
+        <span class="kw">let </span>derive_input: <a href="https://docs.rs/syn/2.0.52/syn/derive/struct.DeriveInput.html">syn::DeriveInput</a> = <a href="#65">input</a>.<a href="https://docs.rs/syn/2.0.52/syn/parse/struct.ParseBuffer.html#method.parse">parse</a>()<span class="question-mark">?</span>;
+        <span class="kw">let </span>args: <span class="prelude-ty">Option</span>&lt;<a href="#45-48">Args</a>&gt; = <span class="kw">if let </span><span class="prelude-val">Some</span>(attr) = <a href="#66">derive_input</a>
             .attrs
-            .iter()
-            .find(|x| x.path.is_ident(<span class="string">&quot;value_delegate&quot;</span>))
+            .<a href="https://doc.rust-lang.org/nightly/core/foreigntype.slice.html#method.iter">iter</a>()
+            .<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#tymethod.find">find</a>(|x| <a href="#70">x</a>.<a href="https://docs.rs/syn/2.0.52/syn/attr/struct.Attribute.html#method.path">path</a>().<a href="https://docs.rs/syn/2.0.52/syn/path/struct.Path.html#method.is_ident">is_ident</a>(<span class="string">"value_delegate"</span>))
         {
-            <span class="kw">let </span>args: Args = attr.parse_args()<span class="question-mark">?</span>;
-            <span class="prelude-val">Some</span>(args)
+            <span class="kw">let </span>args: <a href="#45-48">Args</a> = <a href="#67">attr</a>.<a href="https://docs.rs/syn/2.0.52/syn/attr/struct.Attribute.html#method.parse_args">parse_args</a>()<span class="question-mark">?</span>;
+            <span class="prelude-val">Some</span>(<a href="#72">args</a>)
         } <span class="kw">else </span>{
             <span class="prelude-val">None
         </span>};
 
         <span class="kw">let </span>(delegated_ty, mode) =
-            <span class="kw">if let </span><span class="prelude-val">Some</span>(path) = args.as_ref().and_then(|a| a.from_path.as_ref()) {
-                (<span class="prelude-val">Some</span>(path.clone()), DeriveMode::From)
+            <span class="kw">if let </span><span class="prelude-val">Some</span>(path) = <a href="#67">args</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|a| <a href="#79">a</a>.from_path.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.as_ref">as_ref</a>()) {
+                (<span class="prelude-val">Some</span>(<a href="#79">path</a>.<a href="https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#tymethod.clone">clone</a>()), <a href="#10">DeriveMode::From</a>)
             } <span class="kw">else </span>{
-                <span class="kw">let </span>path = <span class="kw">match </span>derive_input.data {
-                    syn::Data::Struct(s) =&gt; <span class="kw">match </span>s.fields {
-                        syn::Fields::Unnamed(fields) <span class="kw">if </span>fields.unnamed.iter().count() == <span class="number">1 </span>=&gt; {
-                            fields.unnamed.into_iter().next().and_then(|x| <span class="kw">match </span>x.ty {
-                                syn::Type::Path(p) =&gt; <span class="prelude-val">Some</span>(p.path),
+                <span class="kw">let </span>path = <span class="kw">match </span><a href="#66">derive_input</a>.data {
+                    <a href="https://docs.rs/syn/2.0.52/syn/derive/enum.Data.html#variant.Struct">syn::Data::Struct</a>(s) =&gt; <span class="kw">match </span><a href="#83">s</a>.fields {
+                        <a href="https://docs.rs/syn/2.0.52/syn/data/enum.Fields.html#variant.Unnamed">syn::Fields::Unnamed</a>(fields) <span class="kw">if </span><a href="#84">fields</a>.unnamed.<a href="https://docs.rs/syn/2.0.52/syn/punctuated/struct.Punctuated.html#method.iter">iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#tymethod.count">count</a>() == <span class="number">1 </span>=&gt; {
+                            <a href="#84">fields</a>.unnamed.<a href="https://doc.rust-lang.org/nightly/core/iter/traits/collect/trait.IntoIterator.html#tymethod.into_iter">into_iter</a>().<a href="https://doc.rust-lang.org/nightly/core/iter/traits/iterator/trait.Iterator.html#tymethod.next">next</a>().<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.and_then">and_then</a>(|x| <span class="kw">match </span><a href="#85">x</a>.ty {
+                                <a href="https://docs.rs/syn/2.0.52/syn/ty/enum.Type.html#variant.Path">syn::Type::Path</a>(p) =&gt; <span class="prelude-val">Some</span>(<a href="#86">p</a>.path),
                                 <span class="kw">_ </span>=&gt; <span class="prelude-val">None</span>,
                             })
                         }
@@ -364,46 +366,46 @@
                     },
                     <span class="kw">_ </span>=&gt; <span class="prelude-val">None</span>,
                 };
-                (path, DeriveMode::Private)
+                (<a href="#82">path</a>, <a href="#12">DeriveMode::Private</a>)
             };
-        <span class="kw">let </span>delegated_ty = delegated_ty.ok_or_else(|| {
-            syn::Error::new(
-                derive_input.ident.span(),
-                <span class="string">&quot;Unless `derive(ValueDelegate)` is used over a newtype with 1 field, \
+        <span class="kw">let </span>delegated_ty = <a href="#78">delegated_ty</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.ok_or_else">ok_or_else</a>(|| {
+            <a href="https://docs.rs/syn/2.0.52/syn/error/struct.Error.html#method.new">syn::Error::new</a>(
+                <a href="#66">derive_input</a>.ident.<a href="https://docs.rs/proc-macro2/1.0.78/proc_macro2/struct.Ident.html#method.span">span</a>(),
+                <span class="string">"Unless `derive(ValueDelegate)` is used over a newtype with 1 field, \
                 the delegated type must be specified using \
-                #[value_delegate(from = chosen_type)]&quot;</span>,
+                #[value_delegate(from = chosen_type)]"</span>,
             )
         })<span class="question-mark">?</span>;
 
-        <span class="prelude-val">Ok</span>(ValueDelegateInput {
-            delegated_ty,
-            ident: derive_input.ident,
-            mode,
-            nullable: args.map(|a| a.nullable).unwrap_or(<span class="bool-val">false</span>),
+        <span class="prelude-val">Ok</span>(<a href="#15-20">ValueDelegateInput</a> {
+            <a href="#96">delegated_ty</a>,
+            ident: <a href="#66">derive_input</a>.ident,
+            <a href="#78">mode</a>,
+            nullable: <a href="#67">args</a>.<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.map">map</a>(|a| <a href="#109">a</a>.nullable).<a href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html#method.unwrap_or">unwrap_or</a>(<span class="bool-val">false</span>),
         })
     }
 }
 
-<span class="kw">pub fn </span>impl_value_delegate(input: ValueDelegateInput) -&gt; syn::Result&lt;proc_macro::TokenStream&gt; {
-    <span class="kw">let </span>ValueDelegateInput {
+<span class="kw">pub fn </span>impl_value_delegate(input: <a href="#15-20">ValueDelegateInput</a>) -&gt; syn::Result&lt;<a href="https://doc.rust-lang.org/nightly/proc_macro/struct.TokenStream.html">proc_macro::TokenStream</a>&gt; {
+    <span class="kw">let </span><a href="#15-20">ValueDelegateInput</a> {
         delegated_ty,
         ident,
         mode,
         nullable,
         ..
-    } = <span class="kw-2">&amp;</span>input;
-    <span class="kw">let </span>crate_ident = crate_ident_new();
+    } = <span class="kw-2">&amp;</span><a href="#114">input</a>;
+    <span class="kw">let </span>crate_ident = <a href="utils.rs.html#188-215">crate_ident_new</a>();
 
     <span class="comment">// this must be called in a context where `this` is defined.
-    </span><span class="kw">let </span>delegate_value = <span class="kw">match </span>mode {
-        DeriveMode::From =&gt; {
-            <span class="macro">quote!</span>(&lt;#delegated_ty <span class="kw">as </span>std::convert::From&lt;<span class="kw">_</span>&gt;&gt;::from(this))
+    </span><span class="kw">let </span>delegate_value = <span class="kw">match </span><a href="#118">mode</a> {
+        <a href="#10">DeriveMode::From</a> =&gt; {
+            <a class="macro" href="https://docs.rs/quote/1.0.35/quote/macro.quote.html">quote!</a>(&lt;#delegated_ty <span class="kw">as </span>std::convert::From&lt;<span class="kw">_</span>&gt;&gt;::from(this))
         }
-        DeriveMode::Private =&gt; <span class="macro">quote!</span>(this.<span class="number">0</span>),
+        <a href="#12">DeriveMode::Private</a> =&gt; <a class="macro" href="https://docs.rs/quote/1.0.35/quote/macro.quote.html">quote!</a>(this.<span class="number">0</span>),
     };
 
-    <span class="kw">let </span>to_value_optional = nullable.then(|| {
-        <span class="macro">quote! </span>{
+    <span class="kw">let </span>to_value_optional = <a href="#119">nullable</a>.<a href="https://doc.rust-lang.org/nightly/core/foreigntype.bool.html#method.then">then</a>(|| {
+        <a class="macro" href="https://docs.rs/quote/1.0.35/quote/macro.quote.html">quote!</a> {
             <span class="kw">impl </span>#crate_ident::value::ToValueOptional <span class="kw">for </span>#ident {
                 <span class="kw">fn </span>to_value_optional(s: ::core::option::Option&lt;<span class="kw-2">&amp;</span><span class="self">Self</span>&gt;) -&gt; #crate_ident::value::Value {
                     <span class="kw">if let </span>::core::option::Option::Some(this) = s {
@@ -416,19 +418,19 @@
         }
     });
 
-    <span class="kw">let </span>from_value = <span class="kw">match </span>mode {
-        DeriveMode::From =&gt; {
-            <span class="macro">quote!</span>(#ident::from(&lt;#delegated_ty <span class="kw">as </span>#crate_ident::value::FromValue&lt;<span class="lifetime">&#39;a</span>&gt;&gt;::from_value(value)))
+    <span class="kw">let </span>from_value = <span class="kw">match </span><a href="#118">mode</a> {
+        <a href="#10">DeriveMode::From</a> =&gt; {
+            <a class="macro" href="https://docs.rs/quote/1.0.35/quote/macro.quote.html">quote!</a>(#ident::from(&lt;#delegated_ty <span class="kw">as </span>#crate_ident::value::FromValue&lt;<span class="lifetime">'a</span>&gt;&gt;::from_value(value)))
         }
-        DeriveMode::Private =&gt; {
-            <span class="macro">quote!</span>(#ident(&lt;#delegated_ty <span class="kw">as </span>#crate_ident::value::FromValue&lt;<span class="lifetime">&#39;a</span>&gt;&gt;::from_value(value)))
+        <a href="#12">DeriveMode::Private</a> =&gt; {
+            <a class="macro" href="https://docs.rs/quote/1.0.35/quote/macro.quote.html">quote!</a>(#ident(&lt;#delegated_ty <span class="kw">as </span>#crate_ident::value::FromValue&lt;<span class="lifetime">'a</span>&gt;&gt;::from_value(value)))
         }
     };
 
-    <span class="kw">let </span>res = <span class="macro">quote! </span>{
-        <span class="kw">impl </span>#crate_ident::types::StaticType <span class="kw">for </span>#ident {
+    <span class="kw">let </span>res = <a class="macro" href="https://docs.rs/quote/1.0.35/quote/macro.quote.html">quote!</a> {
+        <span class="kw">impl </span>#crate_ident::prelude::StaticType <span class="kw">for </span>#ident {
             <span class="kw">fn </span>static_type() -&gt; glib::types::Type {
-                &lt;#delegated_ty <span class="kw">as </span>#crate_ident::types::StaticType&gt;::static_type()
+                &lt;#delegated_ty <span class="kw">as </span>#crate_ident::prelude::StaticType&gt;::static_type()
             }
         }
 
@@ -451,10 +453,10 @@
 
         #to_value_optional
 
-        <span class="kw">unsafe impl</span>&lt;<span class="lifetime">&#39;a</span>&gt; #crate_ident::value::FromValue&lt;<span class="lifetime">&#39;a</span>&gt; <span class="kw">for </span>#ident {
-            <span class="kw">type </span>Checker = &lt;#delegated_ty <span class="kw">as </span>#crate_ident::value::FromValue&lt;<span class="lifetime">&#39;a</span>&gt;&gt;::Checker;
+        <span class="kw">unsafe impl</span>&lt;<span class="lifetime">'a</span>&gt; #crate_ident::value::FromValue&lt;<span class="lifetime">'a</span>&gt; <span class="kw">for </span>#ident {
+            <span class="kw">type </span>Checker = &lt;#delegated_ty <span class="kw">as </span>#crate_ident::value::FromValue&lt;<span class="lifetime">'a</span>&gt;&gt;::Checker;
 
-            <span class="kw">unsafe fn </span>from_value(value: <span class="kw-2">&amp;</span><span class="lifetime">&#39;a </span>#crate_ident::value::Value) -&gt; <span class="self">Self </span>{
+            <span class="kw">unsafe fn </span>from_value(value: <span class="kw-2">&amp;</span><span class="lifetime">'a </span>#crate_ident::value::Value) -&gt; <span class="self">Self </span>{
                 #from_value
             }
         }
@@ -465,10 +467,10 @@
             <span class="kw">type </span>BuilderFn = &lt;#delegated_ty <span class="kw">as </span>#crate_ident::HasParamSpec&gt;::BuilderFn;
 
             <span class="kw">fn </span>param_spec_builder() -&gt; <span class="self">Self</span>::BuilderFn {
-                &lt;#delegated_ty <span class="kw">as </span>#crate_ident::HasParamSpec&gt;::param_spec_builder()
+                &lt;#delegated_ty <span class="kw">as </span>#crate_ident::prelude::HasParamSpec&gt;::param_spec_builder()
             }
         }
     };
-    <span class="prelude-val">Ok</span>(res.into())
+    <span class="prelude-val">Ok</span>(<a href="#155">res</a>.<a href="https://doc.rust-lang.org/nightly/core/convert/trait.Into.html#tymethod.into">into</a>())
 }
 </code></pre></div></section></main></body></html>

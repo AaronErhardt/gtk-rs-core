@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"trait":["FontExt","FontMapExt","FontMapExtManual"]};
+window.SIDEBAR_ITEMS = {"trait":["PangoCairoFontExt","PangoCairoFontMapExt","PangoCairoFontMapExtManual"]};
